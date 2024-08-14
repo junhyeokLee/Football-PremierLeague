@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_premier_league/common/constant/app_colors.dart';
 
 class AppTheme {
   // 1
@@ -56,8 +57,9 @@ class AppTheme {
           ),
           backgroundColor: Colors.black87,
           foregroundColor: Colors.white),
+
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.white,
         // 원하는 배경색으로 변경
         indicatorColor: Colors.white,
         labelTextStyle: MaterialStateProperty.resolveWith((states) {
@@ -93,24 +95,51 @@ class AppTheme {
         brightness: Brightness.light,
       ),
       textButtonTheme: TextButtonThemeData(
-          style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(Colors.black87),
-        overlayColor: MaterialStateProperty.all(
-          Colors.black54,
+        style: ButtonStyle(
+          minimumSize: WidgetStateProperty.all<Size>(
+            const Size(48, 48),
+          ),
+          padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+            const EdgeInsets.symmetric(vertical: 12.5),
+          ),
+          backgroundColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.disabled)) {
+              return AppColors.grey20; // 비활성화된 버튼의 배경색
+            }
+            return AppColors.primaryColor; // 활성화된 버튼의 배경색
+          }),
+          foregroundColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.disabled)) {
+              return AppColors.black; // 비활성화된 버튼의 텍스트 색상
+            }
+            return AppColors.backgroundColor; // 활성화된 버튼의 텍스트 색상
+          }),
+        shape: WidgetStateProperty.all<ContinuousRectangleBorder>(
+          ContinuousRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(48.0), // 위쪽 라운드 정도
+              bottom: Radius.circular(48.0), // 아래쪽 라운드 정도
+            ),
+          ),
         ),
-      )),
+      ),
+    ),
+
+
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
         titleTextStyle: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+          fontSize: 24,
+          fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
         elevation: 0,
-        centerTitle: true,
+        // titleSpacing: 0.0,
+        centerTitle: false,
         toolbarHeight: 64,
       ),
+
       inputDecorationTheme: const InputDecorationTheme(
         labelStyle: TextStyle(color: Colors.black45),
         focusedBorder: OutlineInputBorder(
@@ -142,6 +171,14 @@ class AppTheme {
           borderRadius: BorderRadius.all(
             Radius.circular(8.0),
           ),
+        ),
+      ),
+
+      buttonTheme: ButtonThemeData(
+        buttonColor: AppColors.veryDarkGrey,
+        textTheme: ButtonTextTheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
     );
