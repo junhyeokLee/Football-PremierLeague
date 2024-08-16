@@ -56,74 +56,53 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
             ),
 
           ),
-          // shape: CustomTriangleBorder(
-          //   borderRadius: 8,
-          //   borderColor: Colors.transparent,
-          // ),
         ),
         child: NavigationBar(
           height: Dimen.navBottomHeight,
           backgroundColor: Colors.white,
           selectedIndex: currentIndex,
           indicatorColor: Colors.transparent,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide, // 라벨 숨기기
           destinations: [
             NavigationDestination(
-              icon: Padding(
-                padding: EdgeInsets.only(top: 12.0),  // 아이콘을 상단에서 하단으로 이동
-                child: Image.asset(
-                  Assets.football,
-                  width: 24,
-                  height: 24,
-                  color: AppColors.grey20,
-                ),
+              icon: Image.asset(
+                Assets.football,
+                width: 24,
+                height: 24,
+                color: AppColors.grey20,
               ),
-              selectedIcon: Padding(
-                padding: EdgeInsets.only(top: 12.0),  // 아이콘을 상단에서 하단으로 이동
-                child: Image.asset(
-                  Assets.footballSelect,
-                  width: 24,
-                  height: 24,
-                ),
+              selectedIcon: Image.asset(
+                Assets.footballSelect,
+                width: 24,
+                height: 24,
               ),
               label: '',
             ),
             NavigationDestination(
-              icon: Padding(
-                padding: EdgeInsets.only(top: 12.0),
-                child: Image.asset(
-                  Assets.ranking,
-                  width: 24,
-                  height: 24,
-                  color: AppColors.grey20,
-                ),
+              icon: Image.asset(
+                Assets.ranking,
+                width: 24,
+                height: 24,
+                color: AppColors.grey20,
               ),
-              selectedIcon: Padding(
-                padding: EdgeInsets.only(top: 12.0),
-                child: Image.asset(
-                  Assets.rankingSelect,
-                  width: 24,
-                  height: 24,
-                ),
+              selectedIcon: Image.asset(
+                Assets.rankingSelect,
+                width: 24,
+                height: 24,
               ),
               label: '',
             ),
             NavigationDestination(
-              icon: Padding(
-                padding: EdgeInsets.only(top: 12.0),
-                child: Image.asset(
-                  Assets.players,
-                  width: 24,
-                  height: 24,
-                  color: AppColors.grey20,
-                ),
+              icon: Image.asset(
+                Assets.players,
+                width: 24,
+                height: 24,
+                color: AppColors.grey20,
               ),
-              selectedIcon: Padding(
-                padding: EdgeInsets.only(top: 12.0),
-                child: Image.asset(
-                  Assets.players,
-                  width: 24,
-                  height: 24,
-                ),
+              selectedIcon: Image.asset(
+                Assets.players,
+                width: 24,
+                height: 24,
               ),
               label: '',
             ),

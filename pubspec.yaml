@@ -30,6 +30,7 @@ dependencies:
   flutter_svg: ^2.0.3   # SVG 이미지를 위한 flutter_svg
   transparent_image: ^2.0.1 # 이미지 투명도를 위한 transparent_image
   dropdown_button2: ^2.3.9 # 드롭다운 버튼을 위한 dropdown_button2
+  table_calendar: ^3.1.2 # 달력을 위한 table_calendar
 
   #util
   velocity_x: ^4.1.0  # UI를 위한 velocity_x

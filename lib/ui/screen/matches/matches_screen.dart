@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
-import 'package:football_premier_league/common/widget/custom_container.dart';
 import 'package:football_premier_league/common/widget/custom_dropdown_button.dart';
+import 'package:football_premier_league/providers/calendar_provider.dart';
+import 'package:football_premier_league/ui/screen/matches/widget/matches_list.dart';
 
 
-final selectedYearProvider = StateProvider<int?>((ref) => null);
 
 class MatchesScreen extends ConsumerWidget {
   const MatchesScreen({super.key});
@@ -52,52 +52,8 @@ class MatchesScreen extends ConsumerWidget {
         body: Column(
           children: [
             Expanded(
-              child: RefreshIndicator(
-                onRefresh: () async {
-                  // ref.invalidate(fetchMatchesProvider);
-                  // try {
-                  //   await ref.read(fetchMatchesProvider(queryData: (page: 1, query: query)).future,);
-                  // } catch (e) {
-                  // }
-                }, child: CustomContainer(),
-                // child: ListView.builder(
-                //   key: ValueKey(query),
-                //   itemCount: totalResults,
-                //   itemBuilder: (context, index) {
-                //     final page = index ~/ pageSize + 1;
-                //     final indexInPage = index % pageSize;
-                //     final responseAsync = ref.watch(
-                //       fetchMatchesProvider(queryData: (page: page, query: query)),
-                //     );
-                //     return responseAsync.when(
-                //       error: (err, stack) => MovieListTileError(
-                //         query: query,
-                //         page: page,
-                //         indexInPage: indexInPage,
-                //         error: err.toString(),
-                //         isLoading: responseAsync.isLoading,
-                //       ),
-                //       // loading: () => const MovieListTileShimmer(),
-                //       data: (response) {
-                //         if (indexInPage >= response.results.length) {
-                //           return null;
-                //         }
-                //         final movie = response.results[indexInPage];
-                //         return MovieListTile(
-                //           movie: movie,
-                //           debugIndex: index + 1,
-                //           onPressed: () => context.goNamed(
-                //             AppRoute.movie.name,
-                //             pathParameters: {'id': movie.id.toString()},
-                //             extra: movie,
-                //           ),
-                //         );
-                //       },
-                //     );
-                //   },
-                // ),
-              ),
-            ),
+              child: MatchesList(),
+            )
           ],
         )
     );
