@@ -42,10 +42,13 @@ class CustomCalendar extends HookConsumerWidget {
 
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0), // 좌우 패딩만 설정
+      // padding: const EdgeInsets.only(left: 8.0,right: 8.0,top: 0,bottom: 0),
       child: TableCalendar(
         firstDay: firstDay,
         lastDay: lastDay,
+        daysOfWeekHeight: 48.0, // 기본값보다 낮은 값으로 설정하여 간격을 줄임
+        rowHeight: 40.0, // 행의 높이를 줄여서 더 많은 날짜가 보이도록 함
         headerVisible: false,
         rangeSelectionMode: RangeSelectionMode.toggledOff,
         focusedDay: focusedDate ?? DateTime.now(),
@@ -182,6 +185,7 @@ class CustomCalendar extends HookConsumerWidget {
             return Transform.translate(
               offset: Offset(0, -8.0),  // y축으로 -8.0만큼 이동시켜 위로 올림
               child: Container(
+                margin: const EdgeInsets.all(4.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColors.black.withOpacity(0.1), // 오늘 날짜 배경 색상
@@ -248,7 +252,7 @@ class CustomCalendar extends HookConsumerWidget {
             }
           },
         ),
-        daysOfWeekHeight: 48.0,
+        // daysOfWeekHeight: 48.0,
         availableCalendarFormats: const {
           CalendarFormat.month: '주',
           CalendarFormat.week: '월',

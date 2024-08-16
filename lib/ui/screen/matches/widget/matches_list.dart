@@ -25,7 +25,6 @@ class MatchesList extends HookConsumerWidget {
           const SizedBox(height: 16.0),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

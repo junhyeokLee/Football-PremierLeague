@@ -1,3 +1,4 @@
+import 'package:football_premier_league/data/team/team.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'standings.freezed.dart';
@@ -34,18 +35,4 @@ class Table with _$Table {
 
   factory Table.fromJson(Map<String, dynamic> json) =>
       _$TableFromJson(json);
-}
-
-@freezed
-class Team with _$Team {
-  factory Team({
-    required int id,
-    required String name,
-    required String shortName,
-    required String tla,
-    required String crest,
-  }) = _Team;
-
-  factory Team.fromJson(Map<String, dynamic> json) =>
-      _$TeamFromJson(json);
 }

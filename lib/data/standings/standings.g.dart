@@ -52,20 +52,3 @@ Map<String, dynamic> _$$TableImplToJson(_$TableImpl instance) =>
       'goalsAgainst': instance.goalsAgainst,
       'goalDifference': instance.goalDifference,
     };
-
-_$TeamImpl _$$TeamImplFromJson(Map<String, dynamic> json) => _$TeamImpl(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      shortName: json['shortName'] as String,
-      tla: json['tla'] as String,
-      crest: json['crest'] as String,
-    );
-
-Map<String, dynamic> _$$TeamImplToJson(_$TeamImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'shortName': instance.shortName,
-      'tla': instance.tla,
-      'crest': instance.crest,
-    };
