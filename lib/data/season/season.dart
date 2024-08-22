@@ -7,9 +7,9 @@ part 'season.g.dart';
 class Season with _$Season {
   factory Season({
     required int id,
-    required String startDate,
-    required String endDate,
-    required int currentMatchday,
+    @Default("") String startDate,
+    @Default("") String endDate,
+    @Default(0) int currentMatchday,
     String? winner,
   }) = _Season;
 

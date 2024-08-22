@@ -23,8 +23,12 @@ mixin _$StandingsResponse {
   List<Standings> get standings => throw _privateConstructorUsedError;
   List<String> get errors => throw _privateConstructorUsedError;
 
+  /// Serializes this StandingsResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StandingsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StandingsResponseCopyWith<StandingsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$StandingsResponseCopyWithImpl<$Res, $Val extends StandingsResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StandingsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$StandingsResponseImplCopyWithImpl<$Res>
       $Res Function(_$StandingsResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StandingsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,14 +157,16 @@ class _$StandingsResponseImpl implements _StandingsResponse {
             const DeepCollectionEquality().equals(other._errors, _errors));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_standings),
       const DeepCollectionEquality().hash(_errors));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StandingsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StandingsResponseImplCopyWith<_$StandingsResponseImpl> get copyWith =>
@@ -183,8 +193,11 @@ abstract class _StandingsResponse implements StandingsResponse {
   List<Standings> get standings;
   @override
   List<String> get errors;
+
+  /// Create a copy of StandingsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StandingsResponseImplCopyWith<_$StandingsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

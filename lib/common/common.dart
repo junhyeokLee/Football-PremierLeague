@@ -1,4 +1,5 @@
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/logger.dart';
 
 export 'dart:async';
 
@@ -21,5 +22,10 @@ export 'widget/w_line.dart';
 export 'widget/w_tap.dart';
 
 const defaultFontStyle = GoogleFonts.ptSerif;
+final logger = Logger();
 
 void voidFunction() {}
+
+
+
+

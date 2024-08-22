@@ -7,7 +7,7 @@ part of 'odds.dart';
 // **************************************************************************
 
 _$OddsImpl _$$OddsImplFromJson(Map<String, dynamic> json) => _$OddsImpl(
-      msg: json['msg'] as String,
+      msg: json['msg'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$OddsImplToJson(_$OddsImpl instance) =>

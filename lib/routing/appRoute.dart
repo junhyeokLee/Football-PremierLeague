@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:football_premier_league/routing/scaffold_with_nested_navigation.dart';
-import 'package:football_premier_league/ui/screen/matches/detail/match_details_screen.dart';
-import 'package:football_premier_league/ui/screen/matches/matches_screen.dart';
-import 'package:football_premier_league/ui/screen/playerRank/players_rank.dart';
-import 'package:football_premier_league/ui/screen/teamRank/teams_rank.dart';
+import 'package:football_premier_league/ui/screen/matches/matchesScreen.dart';
+import 'package:football_premier_league/ui/screen/playerRank/playersRankScreen.dart';
+import 'package:football_premier_league/ui/screen/teamRank/teamsRankScreen.dart';
 import 'package:go_router/go_router.dart';
 
 enum AppRoute {

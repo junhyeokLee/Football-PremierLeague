@@ -8,6 +8,7 @@ class Assets {
   static const String team = 'assets/images/icon/team.png';
   static const String teamSelect = 'assets/images/icon/team_select.png';
   static const String players = 'assets/images/icon/players.png';
+  static const String empty_field = 'assets/images/icon/empty_field.png';
 
 }
 

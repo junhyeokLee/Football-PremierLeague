@@ -22,8 +22,12 @@ Odds _$OddsFromJson(Map<String, dynamic> json) {
 mixin _$Odds {
   String get msg => throw _privateConstructorUsedError;
 
+  /// Serializes this Odds to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Odds
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OddsCopyWith<Odds> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -45,6 +49,8 @@ class _$OddsCopyWithImpl<$Res, $Val extends Odds>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Odds
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +82,8 @@ class __$$OddsImplCopyWithImpl<$Res>
   __$$OddsImplCopyWithImpl(_$OddsImpl _value, $Res Function(_$OddsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Odds
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,12 +101,13 @@ class __$$OddsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OddsImpl implements _Odds {
-  _$OddsImpl({required this.msg});
+  _$OddsImpl({this.msg = ""});
 
   factory _$OddsImpl.fromJson(Map<String, dynamic> json) =>
       _$$OddsImplFromJson(json);
 
   @override
+  @JsonKey()
   final String msg;
 
   @override
@@ -114,11 +123,13 @@ class _$OddsImpl implements _Odds {
             (identical(other.msg, msg) || other.msg == msg));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, msg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Odds
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OddsImplCopyWith<_$OddsImpl> get copyWith =>
@@ -133,14 +144,17 @@ class _$OddsImpl implements _Odds {
 }
 
 abstract class _Odds implements Odds {
-  factory _Odds({required final String msg}) = _$OddsImpl;
+  factory _Odds({final String msg}) = _$OddsImpl;
 
   factory _Odds.fromJson(Map<String, dynamic> json) = _$OddsImpl.fromJson;
 
   @override
   String get msg;
+
+  /// Create a copy of Odds
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OddsImplCopyWith<_$OddsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

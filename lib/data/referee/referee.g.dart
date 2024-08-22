@@ -9,9 +9,9 @@ part of 'referee.dart';
 _$RefereeImpl _$$RefereeImplFromJson(Map<String, dynamic> json) =>
     _$RefereeImpl(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      type: json['type'] as String,
-      nationality: json['nationality'] as String,
+      name: json['name'] as String? ?? "",
+      type: json['type'] as String? ?? "",
+      nationality: json['nationality'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$RefereeImplToJson(_$RefereeImpl instance) =>

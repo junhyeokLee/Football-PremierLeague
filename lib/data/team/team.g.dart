@@ -8,10 +8,10 @@ part of 'team.dart';
 
 _$TeamImpl _$$TeamImplFromJson(Map<String, dynamic> json) => _$TeamImpl(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      shortName: json['shortName'] as String,
-      tla: json['tla'] as String,
-      crest: json['crest'] as String,
+      name: json['name'] as String? ?? "",
+      shortName: json['shortName'] as String? ?? "",
+      tla: json['tla'] as String? ?? "",
+      crest: json['crest'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$TeamImplToJson(_$TeamImpl instance) =>

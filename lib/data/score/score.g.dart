@@ -7,8 +7,8 @@ part of 'score.dart';
 // **************************************************************************
 
 _$ScoreImpl _$$ScoreImplFromJson(Map<String, dynamic> json) => _$ScoreImpl(
-      winner: json['winner'] as String,
-      duration: json['duration'] as String,
+      winner: json['winner'] as String? ?? "",
+      duration: json['duration'] as String? ?? "",
       fullTime: FullTime.fromJson(json['fullTime'] as Map<String, dynamic>),
       halfTime: HalfTime.fromJson(json['halfTime'] as Map<String, dynamic>),
     );
@@ -23,8 +23,8 @@ Map<String, dynamic> _$$ScoreImplToJson(_$ScoreImpl instance) =>
 
 _$FullTimeImpl _$$FullTimeImplFromJson(Map<String, dynamic> json) =>
     _$FullTimeImpl(
-      home: (json['home'] as num).toInt(),
-      away: (json['away'] as num).toInt(),
+      home: (json['home'] as num?)?.toInt() ?? 0,
+      away: (json['away'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$FullTimeImplToJson(_$FullTimeImpl instance) =>
@@ -35,8 +35,8 @@ Map<String, dynamic> _$$FullTimeImplToJson(_$FullTimeImpl instance) =>
 
 _$HalfTimeImpl _$$HalfTimeImplFromJson(Map<String, dynamic> json) =>
     _$HalfTimeImpl(
-      home: (json['home'] as num).toInt(),
-      away: (json['away'] as num).toInt(),
+      home: (json['home'] as num?)?.toInt() ?? 0,
+      away: (json['away'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$HalfTimeImplToJson(_$HalfTimeImpl instance) =>

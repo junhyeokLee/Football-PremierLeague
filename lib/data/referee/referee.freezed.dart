@@ -25,8 +25,12 @@ mixin _$Referee {
   String get type => throw _privateConstructorUsedError;
   String get nationality => throw _privateConstructorUsedError;
 
+  /// Serializes this Referee to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Referee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RefereeCopyWith<Referee> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -48,6 +52,8 @@ class _$RefereeCopyWithImpl<$Res, $Val extends Referee>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Referee
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +101,8 @@ class __$$RefereeImplCopyWithImpl<$Res>
       _$RefereeImpl _value, $Res Function(_$RefereeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Referee
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,9 +137,9 @@ class __$$RefereeImplCopyWithImpl<$Res>
 class _$RefereeImpl implements _Referee {
   _$RefereeImpl(
       {required this.id,
-      required this.name,
-      required this.type,
-      required this.nationality});
+      this.name = "",
+      this.type = "",
+      this.nationality = ""});
 
   factory _$RefereeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RefereeImplFromJson(json);
@@ -139,10 +147,13 @@ class _$RefereeImpl implements _Referee {
   @override
   final int id;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final String type;
   @override
+  @JsonKey()
   final String nationality;
 
   @override
@@ -162,11 +173,13 @@ class _$RefereeImpl implements _Referee {
                 other.nationality == nationality));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, type, nationality);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Referee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RefereeImplCopyWith<_$RefereeImpl> get copyWith =>
@@ -183,9 +196,9 @@ class _$RefereeImpl implements _Referee {
 abstract class _Referee implements Referee {
   factory _Referee(
       {required final int id,
-      required final String name,
-      required final String type,
-      required final String nationality}) = _$RefereeImpl;
+      final String name,
+      final String type,
+      final String nationality}) = _$RefereeImpl;
 
   factory _Referee.fromJson(Map<String, dynamic> json) = _$RefereeImpl.fromJson;
 
@@ -197,8 +210,11 @@ abstract class _Referee implements Referee {
   String get type;
   @override
   String get nationality;
+
+  /// Create a copy of Referee
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RefereeImplCopyWith<_$RefereeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -7,8 +7,8 @@ part 'standings.g.dart';
 @freezed
 class Standings with _$Standings {
   factory Standings({
-    required String stage,
-    required String type,
+    @Default("") String stage,
+    @Default("") String type,
     String? group,
     required List<Table> table,
   }) = _Standings;
@@ -22,15 +22,15 @@ class Table with _$Table {
   factory Table({
     required int position,
     required Team team,
-    required int playedGames,
-    required String form,
-    required int won,
-    required int draw,
-    required int lost,
-    required int points,
-    required int goalsFor,
-    required int goalsAgainst,
-    required int goalDifference,
+    @Default(0) int playedGames,
+    @Default("") String form,
+    @Default(0) int won,
+    @Default(0) int draw,
+    @Default(0) int lost,
+    @Default(0) int points,
+    @Default(0) int goalsFor,
+    @Default(0) int goalsAgainst,
+    @Default(0) int goalDifference,
   }) = _Table;
 
   factory Table.fromJson(Map<String, dynamic> json) =>

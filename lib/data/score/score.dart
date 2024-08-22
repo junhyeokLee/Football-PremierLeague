@@ -6,8 +6,8 @@ part 'score.g.dart';
 @freezed
 class Score with _$Score {
   factory Score({
-    required String winner,
-    required String duration,
+    @Default("") String winner,
+    @Default("") String duration,
     required FullTime fullTime,
     required HalfTime halfTime,
   }) = _Score;
@@ -15,26 +15,22 @@ class Score with _$Score {
   factory Score.fromJson(Map<String, dynamic> json) => _$ScoreFromJson(json);
 }
 
-
 @freezed
 class FullTime with _$FullTime {
   factory FullTime({
-    required int home,
-    required int away,
+    @Default(0) int home,
+    @Default(0) int away,
   }) = _FullTime;
 
-  factory FullTime.fromJson(Map<String, dynamic> json) =>
-      _$FullTimeFromJson(json);
+  factory FullTime.fromJson(Map<String, dynamic> json) => _$FullTimeFromJson(json);
 }
 
 @freezed
 class HalfTime with _$HalfTime {
   factory HalfTime({
-    required int home,
-    required int away,
+    @Default(0) int home,
+    @Default(0) int away,
   }) = _HalfTime;
 
-  factory HalfTime.fromJson(Map<String, dynamic> json) =>
-      _$HalfTimeFromJson(json);
+  factory HalfTime.fromJson(Map<String, dynamic> json) => _$HalfTimeFromJson(json);
 }
-

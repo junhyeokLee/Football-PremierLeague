@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
-import 'package:football_premier_league/common/widget/border/custom_triangle_border.dart';
+import 'package:football_premier_league/ui/widget/border/custom_triangle_border.dart';
 
 class CustomDropdownButton extends StatelessWidget {
   final String text; // 기본으로 표시될 텍스트

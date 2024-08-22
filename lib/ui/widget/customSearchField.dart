@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:football_premier_league/common/common.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
 
-class SearchField extends StatelessWidget {
+class CustomSearchField extends StatelessWidget {
 
   final String hintText; // 힌트 텍스트
   final ValueNotifier<String> searchQuery; // 검색어 상태
 
-  const SearchField({
+  const CustomSearchField({
     super.key,
     required this.hintText,
     required this.searchQuery,

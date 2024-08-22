@@ -25,8 +25,12 @@ mixin _$Standings {
   String? get group => throw _privateConstructorUsedError;
   List<Table> get table => throw _privateConstructorUsedError;
 
+  /// Serializes this Standings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Standings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StandingsCopyWith<Standings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$StandingsCopyWithImpl<$Res, $Val extends Standings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Standings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$StandingsImplCopyWithImpl<$Res>
       _$StandingsImpl _value, $Res Function(_$StandingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Standings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,8 +138,8 @@ class __$$StandingsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StandingsImpl implements _Standings {
   _$StandingsImpl(
-      {required this.stage,
-      required this.type,
+      {this.stage = "",
+      this.type = "",
       this.group,
       required final List<Table> table})
       : _table = table;
@@ -140,8 +148,10 @@ class _$StandingsImpl implements _Standings {
       _$$StandingsImplFromJson(json);
 
   @override
+  @JsonKey()
   final String stage;
   @override
+  @JsonKey()
   final String type;
   @override
   final String? group;
@@ -169,12 +179,14 @@ class _$StandingsImpl implements _Standings {
             const DeepCollectionEquality().equals(other._table, _table));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, stage, type, group,
       const DeepCollectionEquality().hash(_table));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Standings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StandingsImplCopyWith<_$StandingsImpl> get copyWith =>
@@ -190,8 +202,8 @@ class _$StandingsImpl implements _Standings {
 
 abstract class _Standings implements Standings {
   factory _Standings(
-      {required final String stage,
-      required final String type,
+      {final String stage,
+      final String type,
       final String? group,
       required final List<Table> table}) = _$StandingsImpl;
 
@@ -206,8 +218,11 @@ abstract class _Standings implements Standings {
   String? get group;
   @override
   List<Table> get table;
+
+  /// Create a copy of Standings
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StandingsImplCopyWith<_$StandingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -230,8 +245,12 @@ mixin _$Table {
   int get goalsAgainst => throw _privateConstructorUsedError;
   int get goalDifference => throw _privateConstructorUsedError;
 
+  /// Serializes this Table to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Table
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TableCopyWith<Table> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -266,6 +285,8 @@ class _$TableCopyWithImpl<$Res, $Val extends Table>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Table
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -329,6 +350,8 @@ class _$TableCopyWithImpl<$Res, $Val extends Table>
     ) as $Val);
   }
 
+  /// Create a copy of Table
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TeamCopyWith<$Res> get team {
@@ -370,6 +393,8 @@ class __$$TableImplCopyWithImpl<$Res>
       _$TableImpl _value, $Res Function(_$TableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Table
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -440,15 +465,15 @@ class _$TableImpl implements _Table {
   _$TableImpl(
       {required this.position,
       required this.team,
-      required this.playedGames,
-      required this.form,
-      required this.won,
-      required this.draw,
-      required this.lost,
-      required this.points,
-      required this.goalsFor,
-      required this.goalsAgainst,
-      required this.goalDifference});
+      this.playedGames = 0,
+      this.form = "",
+      this.won = 0,
+      this.draw = 0,
+      this.lost = 0,
+      this.points = 0,
+      this.goalsFor = 0,
+      this.goalsAgainst = 0,
+      this.goalDifference = 0});
 
   factory _$TableImpl.fromJson(Map<String, dynamic> json) =>
       _$$TableImplFromJson(json);
@@ -458,22 +483,31 @@ class _$TableImpl implements _Table {
   @override
   final Team team;
   @override
+  @JsonKey()
   final int playedGames;
   @override
+  @JsonKey()
   final String form;
   @override
+  @JsonKey()
   final int won;
   @override
+  @JsonKey()
   final int draw;
   @override
+  @JsonKey()
   final int lost;
   @override
+  @JsonKey()
   final int points;
   @override
+  @JsonKey()
   final int goalsFor;
   @override
+  @JsonKey()
   final int goalsAgainst;
   @override
+  @JsonKey()
   final int goalDifference;
 
   @override
@@ -504,12 +538,14 @@ class _$TableImpl implements _Table {
                 other.goalDifference == goalDifference));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, position, team, playedGames,
       form, won, draw, lost, points, goalsFor, goalsAgainst, goalDifference);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Table
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TableImplCopyWith<_$TableImpl> get copyWith =>
@@ -527,15 +563,15 @@ abstract class _Table implements Table {
   factory _Table(
       {required final int position,
       required final Team team,
-      required final int playedGames,
-      required final String form,
-      required final int won,
-      required final int draw,
-      required final int lost,
-      required final int points,
-      required final int goalsFor,
-      required final int goalsAgainst,
-      required final int goalDifference}) = _$TableImpl;
+      final int playedGames,
+      final String form,
+      final int won,
+      final int draw,
+      final int lost,
+      final int points,
+      final int goalsFor,
+      final int goalsAgainst,
+      final int goalDifference}) = _$TableImpl;
 
   factory _Table.fromJson(Map<String, dynamic> json) = _$TableImpl.fromJson;
 
@@ -561,8 +597,11 @@ abstract class _Table implements Table {
   int get goalsAgainst;
   @override
   int get goalDifference;
+
+  /// Create a copy of Table
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TableImplCopyWith<_$TableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

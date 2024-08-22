@@ -9,10 +9,10 @@ part of 'competition.dart';
 _$CompetitionImpl _$$CompetitionImplFromJson(Map<String, dynamic> json) =>
     _$CompetitionImpl(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      code: json['code'] as String,
-      type: json['type'] as String,
-      emblem: json['emblem'] as String,
+      name: json['name'] as String? ?? "",
+      code: json['code'] as String? ?? "",
+      type: json['type'] as String? ?? "",
+      emblem: json['emblem'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$CompetitionImplToJson(_$CompetitionImpl instance) =>

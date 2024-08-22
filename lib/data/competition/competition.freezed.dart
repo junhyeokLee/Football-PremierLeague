@@ -26,8 +26,12 @@ mixin _$Competition {
   String get type => throw _privateConstructorUsedError;
   String get emblem => throw _privateConstructorUsedError;
 
+  /// Serializes this Competition to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CompetitionCopyWith<Competition> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CompetitionCopyWithImpl<$Res, $Val extends Competition>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,6 +110,8 @@ class __$$CompetitionImplCopyWithImpl<$Res>
       _$CompetitionImpl _value, $Res Function(_$CompetitionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,10 +151,10 @@ class __$$CompetitionImplCopyWithImpl<$Res>
 class _$CompetitionImpl implements _Competition {
   _$CompetitionImpl(
       {required this.id,
-      required this.name,
-      required this.code,
-      required this.type,
-      required this.emblem});
+      this.name = "",
+      this.code = "",
+      this.type = "",
+      this.emblem = ""});
 
   factory _$CompetitionImpl.fromJson(Map<String, dynamic> json) =>
       _$$CompetitionImplFromJson(json);
@@ -154,12 +162,16 @@ class _$CompetitionImpl implements _Competition {
   @override
   final int id;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final String code;
   @override
+  @JsonKey()
   final String type;
   @override
+  @JsonKey()
   final String emblem;
 
   @override
@@ -179,11 +191,13 @@ class _$CompetitionImpl implements _Competition {
             (identical(other.emblem, emblem) || other.emblem == emblem));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, code, type, emblem);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CompetitionImplCopyWith<_$CompetitionImpl> get copyWith =>
@@ -200,10 +214,10 @@ class _$CompetitionImpl implements _Competition {
 abstract class _Competition implements Competition {
   factory _Competition(
       {required final int id,
-      required final String name,
-      required final String code,
-      required final String type,
-      required final String emblem}) = _$CompetitionImpl;
+      final String name,
+      final String code,
+      final String type,
+      final String emblem}) = _$CompetitionImpl;
 
   factory _Competition.fromJson(Map<String, dynamic> json) =
       _$CompetitionImpl.fromJson;
@@ -218,8 +232,11 @@ abstract class _Competition implements Competition {
   String get type;
   @override
   String get emblem;
+
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompetitionImplCopyWith<_$CompetitionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

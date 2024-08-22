@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'matchesResponse.dart';
+part of 'scorerResponse.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,57 +14,57 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MatchesResponse _$MatchesResponseFromJson(Map<String, dynamic> json) {
-  return _MatchesResponse.fromJson(json);
+ScorerResponse _$ScorerResponseFromJson(Map<String, dynamic> json) {
+  return _ScorerResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MatchesResponse {
-  List<Match> get matches => throw _privateConstructorUsedError;
+mixin _$ScorerResponse {
+  List<Scorer> get scorers => throw _privateConstructorUsedError;
   List<String> get errors => throw _privateConstructorUsedError;
 
-  /// Serializes this MatchesResponse to a JSON map.
+  /// Serializes this ScorerResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MatchesResponse
+  /// Create a copy of ScorerResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MatchesResponseCopyWith<MatchesResponse> get copyWith =>
+  $ScorerResponseCopyWith<ScorerResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MatchesResponseCopyWith<$Res> {
-  factory $MatchesResponseCopyWith(
-          MatchesResponse value, $Res Function(MatchesResponse) then) =
-      _$MatchesResponseCopyWithImpl<$Res, MatchesResponse>;
+abstract class $ScorerResponseCopyWith<$Res> {
+  factory $ScorerResponseCopyWith(
+          ScorerResponse value, $Res Function(ScorerResponse) then) =
+      _$ScorerResponseCopyWithImpl<$Res, ScorerResponse>;
   @useResult
-  $Res call({List<Match> matches, List<String> errors});
+  $Res call({List<Scorer> scorers, List<String> errors});
 }
 
 /// @nodoc
-class _$MatchesResponseCopyWithImpl<$Res, $Val extends MatchesResponse>
-    implements $MatchesResponseCopyWith<$Res> {
-  _$MatchesResponseCopyWithImpl(this._value, this._then);
+class _$ScorerResponseCopyWithImpl<$Res, $Val extends ScorerResponse>
+    implements $ScorerResponseCopyWith<$Res> {
+  _$ScorerResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MatchesResponse
+  /// Create a copy of ScorerResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? matches = null,
+    Object? scorers = null,
     Object? errors = null,
   }) {
     return _then(_value.copyWith(
-      matches: null == matches
-          ? _value.matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<Match>,
+      scorers: null == scorers
+          ? _value.scorers
+          : scorers // ignore: cast_nullable_to_non_nullable
+              as List<Scorer>,
       errors: null == errors
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
@@ -74,37 +74,37 @@ class _$MatchesResponseCopyWithImpl<$Res, $Val extends MatchesResponse>
 }
 
 /// @nodoc
-abstract class _$$MatchesResponseImplCopyWith<$Res>
-    implements $MatchesResponseCopyWith<$Res> {
-  factory _$$MatchesResponseImplCopyWith(_$MatchesResponseImpl value,
-          $Res Function(_$MatchesResponseImpl) then) =
-      __$$MatchesResponseImplCopyWithImpl<$Res>;
+abstract class _$$ScorerResponseImplCopyWith<$Res>
+    implements $ScorerResponseCopyWith<$Res> {
+  factory _$$ScorerResponseImplCopyWith(_$ScorerResponseImpl value,
+          $Res Function(_$ScorerResponseImpl) then) =
+      __$$ScorerResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Match> matches, List<String> errors});
+  $Res call({List<Scorer> scorers, List<String> errors});
 }
 
 /// @nodoc
-class __$$MatchesResponseImplCopyWithImpl<$Res>
-    extends _$MatchesResponseCopyWithImpl<$Res, _$MatchesResponseImpl>
-    implements _$$MatchesResponseImplCopyWith<$Res> {
-  __$$MatchesResponseImplCopyWithImpl(
-      _$MatchesResponseImpl _value, $Res Function(_$MatchesResponseImpl) _then)
+class __$$ScorerResponseImplCopyWithImpl<$Res>
+    extends _$ScorerResponseCopyWithImpl<$Res, _$ScorerResponseImpl>
+    implements _$$ScorerResponseImplCopyWith<$Res> {
+  __$$ScorerResponseImplCopyWithImpl(
+      _$ScorerResponseImpl _value, $Res Function(_$ScorerResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MatchesResponse
+  /// Create a copy of ScorerResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? matches = null,
+    Object? scorers = null,
     Object? errors = null,
   }) {
-    return _then(_$MatchesResponseImpl(
-      matches: null == matches
-          ? _value._matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<Match>,
+    return _then(_$ScorerResponseImpl(
+      scorers: null == scorers
+          ? _value._scorers
+          : scorers // ignore: cast_nullable_to_non_nullable
+              as List<Scorer>,
       errors: null == errors
           ? _value._errors
           : errors // ignore: cast_nullable_to_non_nullable
@@ -115,22 +115,22 @@ class __$$MatchesResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MatchesResponseImpl implements _MatchesResponse {
-  _$MatchesResponseImpl(
-      {required final List<Match> matches,
+class _$ScorerResponseImpl implements _ScorerResponse {
+  _$ScorerResponseImpl(
+      {required final List<Scorer> scorers,
       final List<String> errors = const []})
-      : _matches = matches,
+      : _scorers = scorers,
         _errors = errors;
 
-  factory _$MatchesResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MatchesResponseImplFromJson(json);
+  factory _$ScorerResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScorerResponseImplFromJson(json);
 
-  final List<Match> _matches;
+  final List<Scorer> _scorers;
   @override
-  List<Match> get matches {
-    if (_matches is EqualUnmodifiableListView) return _matches;
+  List<Scorer> get scorers {
+    if (_scorers is EqualUnmodifiableListView) return _scorers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_matches);
+    return EqualUnmodifiableListView(_scorers);
   }
 
   final List<String> _errors;
@@ -144,15 +144,15 @@ class _$MatchesResponseImpl implements _MatchesResponse {
 
   @override
   String toString() {
-    return 'MatchesResponse(matches: $matches, errors: $errors)';
+    return 'ScorerResponse(scorers: $scorers, errors: $errors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MatchesResponseImpl &&
-            const DeepCollectionEquality().equals(other._matches, _matches) &&
+            other is _$ScorerResponseImpl &&
+            const DeepCollectionEquality().equals(other._scorers, _scorers) &&
             const DeepCollectionEquality().equals(other._errors, _errors));
   }
 
@@ -160,43 +160,43 @@ class _$MatchesResponseImpl implements _MatchesResponse {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_matches),
+      const DeepCollectionEquality().hash(_scorers),
       const DeepCollectionEquality().hash(_errors));
 
-  /// Create a copy of MatchesResponse
+  /// Create a copy of ScorerResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MatchesResponseImplCopyWith<_$MatchesResponseImpl> get copyWith =>
-      __$$MatchesResponseImplCopyWithImpl<_$MatchesResponseImpl>(
+  _$$ScorerResponseImplCopyWith<_$ScorerResponseImpl> get copyWith =>
+      __$$ScorerResponseImplCopyWithImpl<_$ScorerResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MatchesResponseImplToJson(
+    return _$$ScorerResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _MatchesResponse implements MatchesResponse {
-  factory _MatchesResponse(
-      {required final List<Match> matches,
-      final List<String> errors}) = _$MatchesResponseImpl;
+abstract class _ScorerResponse implements ScorerResponse {
+  factory _ScorerResponse(
+      {required final List<Scorer> scorers,
+      final List<String> errors}) = _$ScorerResponseImpl;
 
-  factory _MatchesResponse.fromJson(Map<String, dynamic> json) =
-      _$MatchesResponseImpl.fromJson;
+  factory _ScorerResponse.fromJson(Map<String, dynamic> json) =
+      _$ScorerResponseImpl.fromJson;
 
   @override
-  List<Match> get matches;
+  List<Scorer> get scorers;
   @override
   List<String> get errors;
 
-  /// Create a copy of MatchesResponse
+  /// Create a copy of ScorerResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MatchesResponseImplCopyWith<_$MatchesResponseImpl> get copyWith =>
+  _$$ScorerResponseImplCopyWith<_$ScorerResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

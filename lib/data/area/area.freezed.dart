@@ -25,8 +25,12 @@ mixin _$Area {
   String get code => throw _privateConstructorUsedError;
   String get flag => throw _privateConstructorUsedError;
 
+  /// Serializes this Area to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Area
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AreaCopyWith<Area> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -48,6 +52,8 @@ class _$AreaCopyWithImpl<$Res, $Val extends Area>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Area
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class __$$AreaImplCopyWithImpl<$Res>
   __$$AreaImplCopyWithImpl(_$AreaImpl _value, $Res Function(_$AreaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Area
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,10 +135,7 @@ class __$$AreaImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AreaImpl implements _Area {
   _$AreaImpl(
-      {required this.id,
-      required this.name,
-      required this.code,
-      required this.flag});
+      {required this.id, this.name = "", this.code = "", this.flag = ""});
 
   factory _$AreaImpl.fromJson(Map<String, dynamic> json) =>
       _$$AreaImplFromJson(json);
@@ -138,10 +143,13 @@ class _$AreaImpl implements _Area {
   @override
   final int id;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final String code;
   @override
+  @JsonKey()
   final String flag;
 
   @override
@@ -160,11 +168,13 @@ class _$AreaImpl implements _Area {
             (identical(other.flag, flag) || other.flag == flag));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, code, flag);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Area
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AreaImplCopyWith<_$AreaImpl> get copyWith =>
@@ -181,9 +191,9 @@ class _$AreaImpl implements _Area {
 abstract class _Area implements Area {
   factory _Area(
       {required final int id,
-      required final String name,
-      required final String code,
-      required final String flag}) = _$AreaImpl;
+      final String name,
+      final String code,
+      final String flag}) = _$AreaImpl;
 
   factory _Area.fromJson(Map<String, dynamic> json) = _$AreaImpl.fromJson;
 
@@ -195,8 +205,11 @@ abstract class _Area implements Area {
   String get code;
   @override
   String get flag;
+
+  /// Create a copy of Area
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AreaImplCopyWith<_$AreaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

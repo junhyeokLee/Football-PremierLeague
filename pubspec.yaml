@@ -16,8 +16,8 @@ dependencies:
   equatable: ^2.0.5
 
   dio: ^5.4.3               # HTTP 요청을 위한 Dio
-  freezed_annotation: ^2.2.0  # 불변 모델 생성을 위한 Freezed
-  json_annotation: ^4.6.0   # JSON 파싱을 위한 json_annotation
+  freezed_annotation: ^2.4.4  # 불변 모델 생성을 위한 Freezed
+  json_annotation: ^4.9.0   # JSON 파싱을 위한 json_annotation
   flutter_riverpod: ^2.5.1  # 상태 관리를 위한 Riverpod
   riverpod_annotation: ^2.3.5  # 상태 관리를 위한 Riverpod
   hooks_riverpod: ^2.5.1     # Hook을 사용하기 위한 hooks_riverpod
@@ -40,17 +40,20 @@ dependencies:
   flutter_cache_manager: ^3.3.0 # 캐시 관리를 위한 flutter_cache_manager
   keyboard_utils_fork: ^0.0.4 # 키보드 관리를 위한 keyboard_utils_fork
   envied: ^0.5.4+1  # 환경 변수를 위한 envied
+  logger: ^2.4.0  # 로그를 위한 logger
+  path_provider: ^2.1.4  # 파일 경로를 위한 path_provider
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1 # 앱 아이콘을 위한 flutter_launcher_icons
   flutter_lints: ^4.0.0 # Lint를 위한 flutter_lints
-  build_runner: ^2.3.0  # 빌드를 위한 build_runner
+  build_runner: ^2.4.12  # 빌드를 위한 build_runner
   riverpod_generator: ^2.4.0 # 상태 관리를 위한 riverpod_generator
-  freezed: ^2.2.0 # 불변 모델 생성을 위한 freezed
-  json_serializable: ^6.5.0  # JSON 파싱을 위한 json_serializable
+  freezed: ^2.5.7 # 불변 모델 생성을 위한 freezed
+  json_serializable: ^6.8.0  # JSON 파싱을 위한 json_serializable
   envied_generator: ^0.5.4+1  # 환경 변수를 위한 envied_generator
+  analyzer: ^6.7.0
 
 flutter_launcher_icons:
   #  android: "launcher_icon"

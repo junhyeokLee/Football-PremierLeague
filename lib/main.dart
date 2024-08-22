@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:football_premier_league/api/standings/standingsResponse.dart';
 import 'package:football_premier_league/common/constant/app_theme.dart';
-import 'package:football_premier_league/common/widget/custom_text_button.dart';
-import 'package:football_premier_league/repository/standingsRepository.dart';
 import 'package:football_premier_league/routing/appRoute.dart';
 
 void main() {

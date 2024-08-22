@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
-import 'package:football_premier_league/common/widget/border/custom_triangle_border.dart';
+import 'package:football_premier_league/ui/widget/border/custom_triangle_border.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String text; // 버튼에 표시될 텍스트

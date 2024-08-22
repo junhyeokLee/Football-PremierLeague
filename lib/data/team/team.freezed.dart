@@ -26,8 +26,12 @@ mixin _$Team {
   String get tla => throw _privateConstructorUsedError;
   String get crest => throw _privateConstructorUsedError;
 
+  /// Serializes this Team to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TeamCopyWith<Team> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,6 +53,8 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$TeamImplCopyWithImpl<$Res>
   __$$TeamImplCopyWithImpl(_$TeamImpl _value, $Res Function(_$TeamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,10 +147,10 @@ class __$$TeamImplCopyWithImpl<$Res>
 class _$TeamImpl implements _Team {
   _$TeamImpl(
       {required this.id,
-      required this.name,
-      required this.shortName,
-      required this.tla,
-      required this.crest});
+      this.name = "",
+      this.shortName = "",
+      this.tla = "",
+      this.crest = ""});
 
   factory _$TeamImpl.fromJson(Map<String, dynamic> json) =>
       _$$TeamImplFromJson(json);
@@ -150,12 +158,16 @@ class _$TeamImpl implements _Team {
   @override
   final int id;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final String shortName;
   @override
+  @JsonKey()
   final String tla;
   @override
+  @JsonKey()
   final String crest;
 
   @override
@@ -176,11 +188,13 @@ class _$TeamImpl implements _Team {
             (identical(other.crest, crest) || other.crest == crest));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, shortName, tla, crest);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TeamImplCopyWith<_$TeamImpl> get copyWith =>
@@ -197,10 +211,10 @@ class _$TeamImpl implements _Team {
 abstract class _Team implements Team {
   factory _Team(
       {required final int id,
-      required final String name,
-      required final String shortName,
-      required final String tla,
-      required final String crest}) = _$TeamImpl;
+      final String name,
+      final String shortName,
+      final String tla,
+      final String crest}) = _$TeamImpl;
 
   factory _Team.fromJson(Map<String, dynamic> json) = _$TeamImpl.fromJson;
 
@@ -214,8 +228,11 @@ abstract class _Team implements Team {
   String get tla;
   @override
   String get crest;
+
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TeamImplCopyWith<_$TeamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

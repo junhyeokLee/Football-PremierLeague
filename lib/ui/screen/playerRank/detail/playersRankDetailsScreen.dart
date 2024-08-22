@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MatchDetailsScreen extends ConsumerWidget {
-  const MatchDetailsScreen(
+class PlayersDetailsScreen extends ConsumerWidget {
+  const PlayersDetailsScreen(
       {super.key, required this.matchId, required this.match});
   final int matchId;
   final Match? match;

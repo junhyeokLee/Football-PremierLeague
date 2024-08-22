@@ -1,16 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'matchesResponse.dart';
+part of 'scorerResponse.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MatchesResponseImpl _$$MatchesResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MatchesResponseImpl(
-      matches: (json['matches'] as List<dynamic>)
-          .map((e) => Match.fromJson(e as Map<String, dynamic>))
+_$ScorerResponseImpl _$$ScorerResponseImplFromJson(Map<String, dynamic> json) =>
+    _$ScorerResponseImpl(
+      scorers: (json['scorers'] as List<dynamic>)
+          .map((e) => Scorer.fromJson(e as Map<String, dynamic>))
           .toList(),
       errors: (json['errors'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -18,9 +17,9 @@ _$MatchesResponseImpl _$$MatchesResponseImplFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$MatchesResponseImplToJson(
-        _$MatchesResponseImpl instance) =>
+Map<String, dynamic> _$$ScorerResponseImplToJson(
+        _$ScorerResponseImpl instance) =>
     <String, dynamic>{
-      'matches': instance.matches,
+      'scorers': instance.scorers,
       'errors': instance.errors,
     };

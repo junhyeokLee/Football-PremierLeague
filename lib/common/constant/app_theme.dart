@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // 1
-  static TextTheme lightTextTheme = const TextTheme(
-    labelLarge: TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.w400, color: Colors.black),
-    bodyLarge: TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.w400, color: Colors.black),
-    bodyMedium: TextStyle(
+  static TextTheme lightTextTheme =  TextTheme(
+    labelLarge: GoogleFonts.nanumGothic(
+        fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black),
+    labelMedium: GoogleFonts.nanumGothic(
+        fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.black),
+    labelSmall: GoogleFonts.nanumGothic(
+        fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.black),
+    bodyLarge: GoogleFonts.nanumGothic(
+        fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black),
+    bodyMedium: GoogleFonts.nanumGothic(
         fontSize: 16.0, fontWeight: FontWeight.w400, color: Colors.black),
-    displayLarge: TextStyle(
-        fontSize: 40.0, fontWeight: FontWeight.w500, color: Colors.black),
-    displayMedium: TextStyle(
+    bodySmall: GoogleFonts.nanumGothic(
+        fontSize: 14.0, fontWeight: FontWeight.w400, color: Colors.black),
+    displayLarge: GoogleFonts.nanumGothic(
+        fontSize: 40.0, fontWeight: FontWeight.w600, color: Colors.black),
+    displayMedium: GoogleFonts.nanumGothic(
         fontSize: 32.0, fontWeight: FontWeight.w400, color: Colors.black),
+    displaySmall: GoogleFonts.nanumGothic(
+        fontSize: 24.0, fontWeight: FontWeight.w400, color: Colors.black),
   );
 
   static TextTheme darkTextTheme = const TextTheme(
@@ -129,13 +138,14 @@ class AppTheme {
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
+        scrolledUnderElevation: 0, // 스크롤시 색변경 이슈
         titleTextStyle: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
-        elevation: 0,
         // titleSpacing: 0.0,
+        elevation: 0,
         centerTitle: false,
         toolbarHeight: 64,
       ),

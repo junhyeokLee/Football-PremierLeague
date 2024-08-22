@@ -26,8 +26,12 @@ mixin _$Season {
   int get currentMatchday => throw _privateConstructorUsedError;
   String? get winner => throw _privateConstructorUsedError;
 
+  /// Serializes this Season to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Season
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SeasonCopyWith<Season> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -54,6 +58,8 @@ class _$SeasonCopyWithImpl<$Res, $Val extends Season>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Season
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,6 +117,8 @@ class __$$SeasonImplCopyWithImpl<$Res>
       _$SeasonImpl _value, $Res Function(_$SeasonImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Season
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,9 +158,9 @@ class __$$SeasonImplCopyWithImpl<$Res>
 class _$SeasonImpl implements _Season {
   _$SeasonImpl(
       {required this.id,
-      required this.startDate,
-      required this.endDate,
-      required this.currentMatchday,
+      this.startDate = "",
+      this.endDate = "",
+      this.currentMatchday = 0,
       this.winner});
 
   factory _$SeasonImpl.fromJson(Map<String, dynamic> json) =>
@@ -161,10 +169,13 @@ class _$SeasonImpl implements _Season {
   @override
   final int id;
   @override
+  @JsonKey()
   final String startDate;
   @override
+  @JsonKey()
   final String endDate;
   @override
+  @JsonKey()
   final int currentMatchday;
   @override
   final String? winner;
@@ -188,12 +199,14 @@ class _$SeasonImpl implements _Season {
             (identical(other.winner, winner) || other.winner == winner));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, startDate, endDate, currentMatchday, winner);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Season
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SeasonImplCopyWith<_$SeasonImpl> get copyWith =>
@@ -210,9 +223,9 @@ class _$SeasonImpl implements _Season {
 abstract class _Season implements Season {
   factory _Season(
       {required final int id,
-      required final String startDate,
-      required final String endDate,
-      required final int currentMatchday,
+      final String startDate,
+      final String endDate,
+      final int currentMatchday,
       final String? winner}) = _$SeasonImpl;
 
   factory _Season.fromJson(Map<String, dynamic> json) = _$SeasonImpl.fromJson;
@@ -227,8 +240,11 @@ abstract class _Season implements Season {
   int get currentMatchday;
   @override
   String? get winner;
+
+  /// Create a copy of Season
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeasonImplCopyWith<_$SeasonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

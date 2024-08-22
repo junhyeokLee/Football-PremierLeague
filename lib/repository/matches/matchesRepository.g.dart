@@ -22,7 +22,7 @@ final matchesRepositoryProvider =
 );
 
 typedef MatchesRepositoryRef = AutoDisposeProviderRef<MatchesRepository>;
-String _$getMatchesHash() => r'06405504ce546f283db40b9dc1b1b3e218df0866';
+String _$getMatchesHash() => r'ddf98a39d4575e2e501788d7fb512bd12b7e66d7';
 
 /// Copied from Dart SDK
 class _SystemHash {

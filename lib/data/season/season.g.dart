@@ -8,9 +8,9 @@ part of 'season.dart';
 
 _$SeasonImpl _$$SeasonImplFromJson(Map<String, dynamic> json) => _$SeasonImpl(
       id: (json['id'] as num).toInt(),
-      startDate: json['startDate'] as String,
-      endDate: json['endDate'] as String,
-      currentMatchday: (json['currentMatchday'] as num).toInt(),
+      startDate: json['startDate'] as String? ?? "",
+      endDate: json['endDate'] as String? ?? "",
+      currentMatchday: (json['currentMatchday'] as num?)?.toInt() ?? 0,
       winner: json['winner'] as String?,
     );
 

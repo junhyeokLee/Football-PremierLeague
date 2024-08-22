@@ -7,10 +7,10 @@ part 'competition.g.dart';
 class Competition with _$Competition {
   factory Competition({
     required int id,
-    required String name,
-    required String code,
-    required String type,
-    required String emblem,
+    @Default("") String name,
+    @Default("") String code,
+    @Default("") String type,
+    @Default("") String emblem,
   }) = _Competition;
 
   factory Competition.fromJson(Map<String, dynamic> json) =>

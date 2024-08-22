@@ -36,8 +36,12 @@ mixin _$Match {
   Odds? get odds => throw _privateConstructorUsedError;
   List<Referee> get referees => throw _privateConstructorUsedError;
 
+  /// Serializes this Match to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MatchCopyWith<Match> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -82,6 +86,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,6 +171,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     ) as $Val);
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AreaCopyWith<$Res> get area {
@@ -173,6 +181,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     });
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CompetitionCopyWith<$Res> get competition {
@@ -181,6 +191,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     });
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SeasonCopyWith<$Res> get season {
@@ -189,6 +201,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     });
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TeamCopyWith<$Res> get homeTeam {
@@ -197,6 +211,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     });
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TeamCopyWith<$Res> get awayTeam {
@@ -205,6 +221,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     });
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ScoreCopyWith<$Res> get score {
@@ -213,6 +231,8 @@ class _$MatchCopyWithImpl<$Res, $Val extends Match>
     });
   }
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OddsCopyWith<$Res>? get odds {
@@ -274,6 +294,8 @@ class __$$MatchImplCopyWithImpl<$Res>
       _$MatchImpl _value, $Res Function(_$MatchImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -366,12 +388,12 @@ class _$MatchImpl implements _Match {
       required this.competition,
       required this.season,
       required this.id,
-      required this.utcDate,
-      required this.status,
-      required this.matchday,
-      required this.stage,
+      this.utcDate = "",
+      this.status = "",
+      this.matchday = 0,
+      this.stage = "",
       this.group,
-      required this.lastUpdated,
+      this.lastUpdated = "",
       required this.homeTeam,
       required this.awayTeam,
       required this.score,
@@ -391,16 +413,21 @@ class _$MatchImpl implements _Match {
   @override
   final int id;
   @override
+  @JsonKey()
   final String utcDate;
   @override
+  @JsonKey()
   final String status;
   @override
+  @JsonKey()
   final int matchday;
   @override
+  @JsonKey()
   final String stage;
   @override
   final String? group;
   @override
+  @JsonKey()
   final String lastUpdated;
   @override
   final Team homeTeam;
@@ -450,7 +477,7 @@ class _$MatchImpl implements _Match {
             const DeepCollectionEquality().equals(other._referees, _referees));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -470,7 +497,9 @@ class _$MatchImpl implements _Match {
       odds,
       const DeepCollectionEquality().hash(_referees));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MatchImplCopyWith<_$MatchImpl> get copyWith =>
@@ -490,12 +519,12 @@ abstract class _Match implements Match {
       required final Competition competition,
       required final Season season,
       required final int id,
-      required final String utcDate,
-      required final String status,
-      required final int matchday,
-      required final String stage,
+      final String utcDate,
+      final String status,
+      final int matchday,
+      final String stage,
       final String? group,
-      required final String lastUpdated,
+      final String lastUpdated,
       required final Team homeTeam,
       required final Team awayTeam,
       required final Score score,
@@ -534,8 +563,11 @@ abstract class _Match implements Match {
   Odds? get odds;
   @override
   List<Referee> get referees;
+
+  /// Create a copy of Match
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MatchImplCopyWith<_$MatchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

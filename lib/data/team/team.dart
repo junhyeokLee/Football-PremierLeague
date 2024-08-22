@@ -9,10 +9,10 @@ part 'team.g.dart';
 class Team with _$Team {
   factory Team({
     required int id,
-    required String name,
-    required String shortName,
-    required String tla,
-    required String crest,
+    @Default("") String name,
+    @Default("") String shortName,
+    @Default("") String tla,
+    @Default("") String crest,
   }) = _Team;
 
   factory Team.fromJson(Map<String, dynamic> json) =>

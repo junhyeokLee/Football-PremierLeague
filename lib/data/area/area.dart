@@ -7,9 +7,9 @@ part 'area.g.dart';
 class Area with _$Area {
   factory Area({
     required int id,
-    required String name,
-    required String code,
-    required String flag,
+    @Default("") String name,
+    @Default("") String code,
+    @Default("") String flag,
   }) = _Area;
 
   factory Area.fromJson(Map<String, dynamic> json) => _$AreaFromJson(json);

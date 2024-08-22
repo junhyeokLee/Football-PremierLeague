@@ -35,6 +35,22 @@ class MatchesRepository {
     debugPrint('Matches Data: ${response.data}');
     return MatchesResponse.fromJson(response.data);
   }
+
+  Future<MatchesResponse> fetchSeasonMatches (
+      { required String season, CancelToken? cancelToken }) async {
+    final uri = Uri(
+      scheme: 'https',
+      host: Env.baseUrl,
+      path: 'v4/competitions/PL/matches',
+      queryParameters: {
+        'season': season ?? DateTime.now().year.toString(),
+      },
+    );
+
+    final response = await client.getUri(uri, cancelToken: cancelToken);
+    debugPrint('Matches Data: ${response.data}');
+    return MatchesResponse.fromJson(response.data);
+  }
 }
 
 

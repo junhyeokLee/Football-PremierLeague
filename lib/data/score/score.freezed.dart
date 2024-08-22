@@ -25,8 +25,12 @@ mixin _$Score {
   FullTime get fullTime => throw _privateConstructorUsedError;
   HalfTime get halfTime => throw _privateConstructorUsedError;
 
+  /// Serializes this Score to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScoreCopyWith<Score> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -52,6 +56,8 @@ class _$ScoreCopyWithImpl<$Res, $Val extends Score>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class _$ScoreCopyWithImpl<$Res, $Val extends Score>
     ) as $Val);
   }
 
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FullTimeCopyWith<$Res> get fullTime {
@@ -88,6 +96,8 @@ class _$ScoreCopyWithImpl<$Res, $Val extends Score>
     });
   }
 
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $HalfTimeCopyWith<$Res> get halfTime {
@@ -121,6 +131,8 @@ class __$$ScoreImplCopyWithImpl<$Res>
       _$ScoreImpl _value, $Res Function(_$ScoreImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,8 +166,8 @@ class __$$ScoreImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ScoreImpl implements _Score {
   _$ScoreImpl(
-      {required this.winner,
-      required this.duration,
+      {this.winner = "",
+      this.duration = "",
       required this.fullTime,
       required this.halfTime});
 
@@ -163,8 +175,10 @@ class _$ScoreImpl implements _Score {
       _$$ScoreImplFromJson(json);
 
   @override
+  @JsonKey()
   final String winner;
   @override
+  @JsonKey()
   final String duration;
   @override
   final FullTime fullTime;
@@ -190,12 +204,14 @@ class _$ScoreImpl implements _Score {
                 other.halfTime == halfTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, winner, duration, fullTime, halfTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScoreImplCopyWith<_$ScoreImpl> get copyWith =>
@@ -211,8 +227,8 @@ class _$ScoreImpl implements _Score {
 
 abstract class _Score implements Score {
   factory _Score(
-      {required final String winner,
-      required final String duration,
+      {final String winner,
+      final String duration,
       required final FullTime fullTime,
       required final HalfTime halfTime}) = _$ScoreImpl;
 
@@ -226,8 +242,11 @@ abstract class _Score implements Score {
   FullTime get fullTime;
   @override
   HalfTime get halfTime;
+
+  /// Create a copy of Score
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScoreImplCopyWith<_$ScoreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -241,8 +260,12 @@ mixin _$FullTime {
   int get home => throw _privateConstructorUsedError;
   int get away => throw _privateConstructorUsedError;
 
+  /// Serializes this FullTime to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FullTime
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FullTimeCopyWith<FullTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -265,6 +288,8 @@ class _$FullTimeCopyWithImpl<$Res, $Val extends FullTime>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FullTime
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -303,6 +328,8 @@ class __$$FullTimeImplCopyWithImpl<$Res>
       _$FullTimeImpl _value, $Res Function(_$FullTimeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FullTime
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,14 +352,16 @@ class __$$FullTimeImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FullTimeImpl implements _FullTime {
-  _$FullTimeImpl({required this.home, required this.away});
+  _$FullTimeImpl({this.home = 0, this.away = 0});
 
   factory _$FullTimeImpl.fromJson(Map<String, dynamic> json) =>
       _$$FullTimeImplFromJson(json);
 
   @override
+  @JsonKey()
   final int home;
   @override
+  @JsonKey()
   final int away;
 
   @override
@@ -349,11 +378,13 @@ class _$FullTimeImpl implements _FullTime {
             (identical(other.away, away) || other.away == away));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, home, away);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FullTime
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FullTimeImplCopyWith<_$FullTimeImpl> get copyWith =>
@@ -368,8 +399,7 @@ class _$FullTimeImpl implements _FullTime {
 }
 
 abstract class _FullTime implements FullTime {
-  factory _FullTime({required final int home, required final int away}) =
-      _$FullTimeImpl;
+  factory _FullTime({final int home, final int away}) = _$FullTimeImpl;
 
   factory _FullTime.fromJson(Map<String, dynamic> json) =
       _$FullTimeImpl.fromJson;
@@ -378,8 +408,11 @@ abstract class _FullTime implements FullTime {
   int get home;
   @override
   int get away;
+
+  /// Create a copy of FullTime
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FullTimeImplCopyWith<_$FullTimeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -393,8 +426,12 @@ mixin _$HalfTime {
   int get home => throw _privateConstructorUsedError;
   int get away => throw _privateConstructorUsedError;
 
+  /// Serializes this HalfTime to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HalfTime
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HalfTimeCopyWith<HalfTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -417,6 +454,8 @@ class _$HalfTimeCopyWithImpl<$Res, $Val extends HalfTime>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HalfTime
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -455,6 +494,8 @@ class __$$HalfTimeImplCopyWithImpl<$Res>
       _$HalfTimeImpl _value, $Res Function(_$HalfTimeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HalfTime
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -477,14 +518,16 @@ class __$$HalfTimeImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$HalfTimeImpl implements _HalfTime {
-  _$HalfTimeImpl({required this.home, required this.away});
+  _$HalfTimeImpl({this.home = 0, this.away = 0});
 
   factory _$HalfTimeImpl.fromJson(Map<String, dynamic> json) =>
       _$$HalfTimeImplFromJson(json);
 
   @override
+  @JsonKey()
   final int home;
   @override
+  @JsonKey()
   final int away;
 
   @override
@@ -501,11 +544,13 @@ class _$HalfTimeImpl implements _HalfTime {
             (identical(other.away, away) || other.away == away));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, home, away);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HalfTime
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HalfTimeImplCopyWith<_$HalfTimeImpl> get copyWith =>
@@ -520,8 +565,7 @@ class _$HalfTimeImpl implements _HalfTime {
 }
 
 abstract class _HalfTime implements HalfTime {
-  factory _HalfTime({required final int home, required final int away}) =
-      _$HalfTimeImpl;
+  factory _HalfTime({final int home, final int away}) = _$HalfTimeImpl;
 
   factory _HalfTime.fromJson(Map<String, dynamic> json) =
       _$HalfTimeImpl.fromJson;
@@ -530,8 +574,11 @@ abstract class _HalfTime implements HalfTime {
   int get home;
   @override
   int get away;
+
+  /// Create a copy of HalfTime
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HalfTimeImplCopyWith<_$HalfTimeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

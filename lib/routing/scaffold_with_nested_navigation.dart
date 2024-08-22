@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
 import 'package:football_premier_league/common/constant/assets.dart';
 import 'package:football_premier_league/common/constant/dimen.dart';
-import 'package:football_premier_league/common/widget/border/custom_triangle_border.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithNestedNavigation extends StatelessWidget {

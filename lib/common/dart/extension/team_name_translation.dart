@@ -1,7 +1,7 @@
 
 extension TeamNameTranslation on String {
-  String get translate {
-    const translations = {
+  String get teamNameTranslate {
+    const teamNameTranslations = {
       'Arsenal FC': '아스날 FC',
       'Aston Villa FC': '애스턴 빌라 FC',
       'Chelsea FC': '첼시 FC',
@@ -24,6 +24,14 @@ extension TeamNameTranslation on String {
       'AFC Bournemouth': 'AFC 본머스'
     };
 
-    return translations[this] ?? this; // 번역된 이름을 반환, 없으면 영어 이름 그대로 반환
+
+    return teamNameTranslations[this] ?? this; // 번역된 이름을 반환, 없으면 영어 이름 그대로 반환
+  }
+
+  String get truncated {
+    if (length > 8) {
+      return '${substring(0, 8)}...'; // 6글자 초과 시 잘라내고 '...' 추가
+    }
+    return this; // 6글자 이하일 경우 원래 문자열 반환
   }
 }
