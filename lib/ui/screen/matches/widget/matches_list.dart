@@ -9,9 +9,12 @@ import 'package:football_premier_league/common/constant/assets.dart';
 import 'package:football_premier_league/common/dart/extension/datetime_extension.dart';
 import 'package:football_premier_league/common/dart/extension/match_status_translation.dart';
 import 'package:football_premier_league/common/dart/extension/team_name_translation.dart';
+import 'package:football_premier_league/routing/appRoute.dart';
 import 'package:football_premier_league/ui/widget/customCalendar.dart';
 import 'package:football_premier_league/providers/calendar_provider.dart';
 import 'package:football_premier_league/repository/matches/matchesRepository.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -20,8 +23,8 @@ class MatchesList extends HookConsumerWidget {
   final today = DateTime.now();
 
   // 캘린더의 시작일과 종료일을 설정하는 변수
-  final firstDay = DateTime.utc(1900, 1, 1);
-  final lastDay = DateTime.utc(2100, 12, 31);
+  final firstDay = DateTime.utc(2000, 1, 1);
+  final lastDay = DateTime.utc(2050, 12, 31);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -106,90 +109,144 @@ class MatchesList extends HookConsumerWidget {
                 itemCount: matchesSnapshot.data!.matches.length, // 매치 데이터 수
                 itemBuilder: (context, index) {
                   final match = matchesSnapshot.data!.matches[index];
-                  return Card(
-                    elevation: 0.1,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0), // 카드의 모서리를 둥글게 설정
-                    ),
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 8.0, // 카드의 수직 간격
-                      horizontal: 16.0, // 카드의 수평 간격
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 16, right: 16, bottom: 16), // 카드 내부의 패딩
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: match.competition.emblem,
-                                width: 50.0,
-                                height: 50.0,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => const CircularProgressIndicator(
-                                  color: AppColors.primaryColor,
-                                ), // 로딩 중 표시
-                                errorWidget: (context, url, error) => const Icon(Icons.error), // 에러 발생 시 표시
-                              ),
-                              Text(
-                                '${parseDateString(match.utcDate).formattedDate}',
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ), // 경기 날짜
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                            children: [
-                              Text(
-                                '${match.homeTeam.name.teamNameTranslate.truncated}', // 팀명 표시
-                                style: Theme.of(context).textTheme.bodyLarge,
+                   Color textStatusColor = Colors.white;
+                   Color boxStatusColor = Colors.grey;
+
+                  if (match.status == "FINISHED") {
+                    boxStatusColor = AppColors.primaryColor;
+                    textStatusColor = Colors.white;
+                  } else if(match.status == "TIMED" || match.status == 'SCHEDULED') {
+                    boxStatusColor = AppColors.grey10;
+                    textStatusColor = Colors.black;
+                  } else if(match.status == "LIVE" || match.status == 'IN_PLAY') {
+                    boxStatusColor = AppColors.activate;
+                    textStatusColor = Colors.white;
+                  } else if(match.status == "PAUSED") {
+                    boxStatusColor = AppColors.black;
+                    textStatusColor = Colors.white;
+                  }else if(match.status == "POSTPONED") {
+                    boxStatusColor = AppColors.black;
+                    textStatusColor = Colors.white;
+                  }else if(match.status == "SUSPENDED") {
+                    boxStatusColor = AppColors.black;
+                    textStatusColor = Colors.white;
+                  }
+                  else if(match.status == "CANCELED") {
+                    boxStatusColor = AppColors.black;
+                    textStatusColor = Colors.white;
+                  }
+                  else {
+                    boxStatusColor = AppColors.grey10;
+                    textStatusColor = Colors.black;
+                  }
+
+                  return InkWell(
+                    onTap: () {
+                      context.goNamed(
+                        AppRoute.match.name,
+                        pathParameters: {'id': match.id.toString()},
+                      );
+                    },
+                    child: Card(
+                      elevation: 0.1,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0), // 카드의 모서리를 둥글게 설정
+                      ),
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 8.0, // 카드의 수직 간격
+                        horizontal: 16.0, // 카드의 수평 간격
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 16, right: 16, bottom: 16), // 카드 내부의 패딩
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: match.competition.emblem,
+                                  width: 50.0,
+                                  height: 50.0,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => const CircularProgressIndicator(
+                                    color: AppColors.primaryColor,
+                                  ), // 로딩 중 표시
+                                  errorWidget: (context, url, error) => const Icon(Icons.error), // 에러 발생 시 표시
+                                ),
+                                Text(
+                                  '${parseDateString(match.utcDate).formattedDate}',
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ), // 경기 날짜
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                              children: [
+                                Text(
+                                  '${match.homeTeam.name.teamNameTranslate.truncated}', // 팀명 표시
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                                Text(
+                                  '${match.awayTeam.name.teamNameTranslate.truncated}', // 팀명 표시
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12.0), // 텍스트 간의 간격
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: match.homeTeam.crest,
+                                  width: 50.0,
+                                  height: 50.0,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => const CircularProgressIndicator(
+                                    color: AppColors.backgroundColor,
+                                  ), // 로딩 중 표시
+                                  errorWidget: (context, url, error) => const Icon(Icons.error), // 에러 발생 시 표시
+                                ),
+                                Text(
+                                  '${match.score.fullTime.home ?? '-'} : ${match.score.fullTime.away ?? '-'}',
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ), // 경기 스코어
+                                CachedNetworkImage(
+                                  imageUrl: match.awayTeam.crest,
+                                  width: 50.0,
+                                  height: 50.0,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => const CircularProgressIndicator(
+                                    color: AppColors.backgroundColor,
+                                  ), // 로딩 중 표시
+                                  errorWidget: (context, url, error) => const Icon(Icons.error), // 에러 발생 시 표시
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12.0), // 텍스트 간의 간격
+                            DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: boxStatusColor, // 상태 색상 설정
+                                borderRadius: BorderRadius.circular(32.0), // 상태 색상을 둥글게 설정
                               ),
-                              Text(
-                                '${match.awayTeam.name.teamNameTranslate.truncated}', // 팀명 표시
-                                style: Theme.of(context).textTheme.bodyLarge,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  '${match.status.matchStatusTranslation}',
+                                  style: TextStyle(
+                                    color: textStatusColor,
+                                    fontSize: 12.0,
+                                    fontFamily: GoogleFonts.nanumGothic().fontFamily,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
-                          const SizedBox(height: 12.0), // 텍스트 간의 간격
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: match.homeTeam.crest,
-                                width: 50.0,
-                                height: 50.0,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => const CircularProgressIndicator(
-                                  color: AppColors.backgroundColor,
-                                ), // 로딩 중 표시
-                                errorWidget: (context, url, error) => const Icon(Icons.error), // 에러 발생 시 표시
-                              ),
-                              Text(
-                                '${match.score.fullTime.home ?? '-'} : ${match.score.fullTime.away ?? '-'}',
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ), // 경기 스코어
-                              CachedNetworkImage(
-                                imageUrl: match.awayTeam.crest,
-                                width: 50.0,
-                                height: 50.0,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => const CircularProgressIndicator(
-                                  color: AppColors.backgroundColor,
-                                ), // 로딩 중 표시
-                                errorWidget: (context, url, error) => const Icon(Icons.error), // 에러 발생 시 표시
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 12.0), // 텍스트 간의 간격
-                          Text(
-                            '${match.status.matchStatusTranslation}',
-                            style: Theme.of(context).textTheme.labelSmall,
-                          ), // 경기 상태
-                        ],
+                            ), // 경기 상태
+                          ],
+                        ),
                       ),
                     ),
                   );

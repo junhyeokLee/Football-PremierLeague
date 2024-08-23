@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   // 1
   static TextTheme lightTextTheme =  TextTheme(
+
     labelLarge: GoogleFonts.nanumGothic(
         fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black),
     labelMedium: GoogleFonts.nanumGothic(

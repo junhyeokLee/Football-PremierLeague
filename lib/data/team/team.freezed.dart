@@ -25,6 +25,9 @@ mixin _$Team {
   String get shortName => throw _privateConstructorUsedError;
   String get tla => throw _privateConstructorUsedError;
   String get crest => throw _privateConstructorUsedError;
+  int get wins => throw _privateConstructorUsedError;
+  int get draws => throw _privateConstructorUsedError;
+  int get losses => throw _privateConstructorUsedError;
 
   /// Serializes this Team to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +43,15 @@ abstract class $TeamCopyWith<$Res> {
   factory $TeamCopyWith(Team value, $Res Function(Team) then) =
       _$TeamCopyWithImpl<$Res, Team>;
   @useResult
-  $Res call({int id, String name, String shortName, String tla, String crest});
+  $Res call(
+      {int id,
+      String name,
+      String shortName,
+      String tla,
+      String crest,
+      int wins,
+      int draws,
+      int losses});
 }
 
 /// @nodoc
@@ -63,6 +74,9 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
     Object? shortName = null,
     Object? tla = null,
     Object? crest = null,
+    Object? wins = null,
+    Object? draws = null,
+    Object? losses = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -85,6 +99,18 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
           ? _value.crest
           : crest // ignore: cast_nullable_to_non_nullable
               as String,
+      wins: null == wins
+          ? _value.wins
+          : wins // ignore: cast_nullable_to_non_nullable
+              as int,
+      draws: null == draws
+          ? _value.draws
+          : draws // ignore: cast_nullable_to_non_nullable
+              as int,
+      losses: null == losses
+          ? _value.losses
+          : losses // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -96,7 +122,15 @@ abstract class _$$TeamImplCopyWith<$Res> implements $TeamCopyWith<$Res> {
       __$$TeamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String shortName, String tla, String crest});
+  $Res call(
+      {int id,
+      String name,
+      String shortName,
+      String tla,
+      String crest,
+      int wins,
+      int draws,
+      int losses});
 }
 
 /// @nodoc
@@ -116,6 +150,9 @@ class __$$TeamImplCopyWithImpl<$Res>
     Object? shortName = null,
     Object? tla = null,
     Object? crest = null,
+    Object? wins = null,
+    Object? draws = null,
+    Object? losses = null,
   }) {
     return _then(_$TeamImpl(
       id: null == id
@@ -138,6 +175,18 @@ class __$$TeamImplCopyWithImpl<$Res>
           ? _value.crest
           : crest // ignore: cast_nullable_to_non_nullable
               as String,
+      wins: null == wins
+          ? _value.wins
+          : wins // ignore: cast_nullable_to_non_nullable
+              as int,
+      draws: null == draws
+          ? _value.draws
+          : draws // ignore: cast_nullable_to_non_nullable
+              as int,
+      losses: null == losses
+          ? _value.losses
+          : losses // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -150,7 +199,10 @@ class _$TeamImpl implements _Team {
       this.name = "",
       this.shortName = "",
       this.tla = "",
-      this.crest = ""});
+      this.crest = "",
+      this.wins = 0,
+      this.draws = 0,
+      this.losses = 0});
 
   factory _$TeamImpl.fromJson(Map<String, dynamic> json) =>
       _$$TeamImplFromJson(json);
@@ -169,10 +221,19 @@ class _$TeamImpl implements _Team {
   @override
   @JsonKey()
   final String crest;
+  @override
+  @JsonKey()
+  final int wins;
+  @override
+  @JsonKey()
+  final int draws;
+  @override
+  @JsonKey()
+  final int losses;
 
   @override
   String toString() {
-    return 'Team(id: $id, name: $name, shortName: $shortName, tla: $tla, crest: $crest)';
+    return 'Team(id: $id, name: $name, shortName: $shortName, tla: $tla, crest: $crest, wins: $wins, draws: $draws, losses: $losses)';
   }
 
   @override
@@ -185,12 +246,16 @@ class _$TeamImpl implements _Team {
             (identical(other.shortName, shortName) ||
                 other.shortName == shortName) &&
             (identical(other.tla, tla) || other.tla == tla) &&
-            (identical(other.crest, crest) || other.crest == crest));
+            (identical(other.crest, crest) || other.crest == crest) &&
+            (identical(other.wins, wins) || other.wins == wins) &&
+            (identical(other.draws, draws) || other.draws == draws) &&
+            (identical(other.losses, losses) || other.losses == losses));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, shortName, tla, crest);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, shortName, tla, crest, wins, draws, losses);
 
   /// Create a copy of Team
   /// with the given fields replaced by the non-null parameter values.
@@ -214,7 +279,10 @@ abstract class _Team implements Team {
       final String name,
       final String shortName,
       final String tla,
-      final String crest}) = _$TeamImpl;
+      final String crest,
+      final int wins,
+      final int draws,
+      final int losses}) = _$TeamImpl;
 
   factory _Team.fromJson(Map<String, dynamic> json) = _$TeamImpl.fromJson;
 
@@ -228,6 +296,12 @@ abstract class _Team implements Team {
   String get tla;
   @override
   String get crest;
+  @override
+  int get wins;
+  @override
+  int get draws;
+  @override
+  int get losses;
 
   /// Create a copy of Team
   /// with the given fields replaced by the non-null parameter values.

@@ -4,13 +4,11 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:football_premier_league/api/scorer/scorerResponse.dart';
-import 'package:football_premier_league/api/standings/standingsResponse.dart';
 import 'package:football_premier_league/env.dart';
 import 'package:football_premier_league/network/dio_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'playersRepository.g.dart';
-
 
 @riverpod
 PlayersRepository playersRepository(PlayersRepositoryRef ref) =>

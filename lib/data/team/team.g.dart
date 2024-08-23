@@ -12,6 +12,9 @@ _$TeamImpl _$$TeamImplFromJson(Map<String, dynamic> json) => _$TeamImpl(
       shortName: json['shortName'] as String? ?? "",
       tla: json['tla'] as String? ?? "",
       crest: json['crest'] as String? ?? "",
+      wins: (json['wins'] as num?)?.toInt() ?? 0,
+      draws: (json['draws'] as num?)?.toInt() ?? 0,
+      losses: (json['losses'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$TeamImplToJson(_$TeamImpl instance) =>
@@ -21,4 +24,7 @@ Map<String, dynamic> _$$TeamImplToJson(_$TeamImpl instance) =>
       'shortName': instance.shortName,
       'tla': instance.tla,
       'crest': instance.crest,
+      'wins': instance.wins,
+      'draws': instance.draws,
+      'losses': instance.losses,
     };

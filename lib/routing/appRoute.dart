@@ -6,8 +6,11 @@ import 'package:football_premier_league/ui/screen/playerRank/playersRankScreen.d
 import 'package:football_premier_league/ui/screen/teamRank/teamsRankScreen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../ui/screen/matches/detail/match_details_screen.dart';
+
 enum AppRoute {
   matches,
+  match,
   teamRank,
   playerRank,;
   static AppRoute find(String? name) {
@@ -42,48 +45,41 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   key: state.pageKey,
                   child: const MatchesScreen(),
                 ),
-                // routes: [
-                //   GoRoute(
-                //     path: ':id',
-                //     name: AppRoute.matches.name,
-                //     pageBuilder: (context, state) {
-                //       final id =
-                //           int.parse(state.pathParameters['id'] as String);
-                //       final match =
-                //           state.extra is Match ? state.extra as Match : null;
-                //
-                //       return CustomTransitionPage(
-                //         key: state.pageKey,
-                //         child: MatchDetailsScreen(matchId: id, match: match),
-                //         transitionsBuilder:
-                //             (context, animation, secondaryAnimation, child) {
-                //           const begin = Offset(1.0, 0.0);
-                //           const end = Offset.zero;
-                //           const curve = Curves.easeInOut;
-                //
-                //           final tween = Tween(begin: begin, end: end)
-                //               .chain(CurveTween(curve: curve));
-                //           final offsetAnimation = animation.drive(tween);
-                //
-                //           return SlideTransition(
-                //             position: offsetAnimation,
-                //             child: child,
-                //           );
-                //
-                //           // var opacity = animation.drive(Tween<double>(begin: 0.5, end: 1.0));
-                //           // return FadeTransition(opacity: opacity, child: child);
-                //         },
-                //         transitionDuration:
-                //             const Duration(milliseconds: 100), // 애니메이션 속도 조절
-                //       );
-                //
-                //       // return MaterialPage(
-                //       //   key: state.pageKey,
-                //       //   child: MovieDetailsScreen(movieId: id, movie: movie),
-                //       // );
-                //     },
-                //   )
-                // ],
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    name: AppRoute.match.name,
+                    pageBuilder: (context, state) {
+                      final id = int.parse(state.pathParameters['id'] as String);
+                      return CustomTransitionPage(
+                        key: state.pageKey,
+                        child: MatchDetailsScreen(matchId: id),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          const begin = Offset(1.0, 0.0);
+                          const end = Offset.zero;
+                          const curve = Curves.easeInOut;
+                          final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                          final offsetAnimation = animation.drive(tween);
+
+                          return SlideTransition(
+                            position: offsetAnimation,
+                            child: child,
+                          );
+
+                          // var opacity = animation.drive(Tween<double>(begin: 0.5, end: 1.0));
+                          // return FadeTransition(opacity: opacity, child: child);
+                        },
+                        transitionDuration:
+                            const Duration(milliseconds: 300), // 애니메이션 속도 조절
+                      );
+
+                      // return MaterialPage(
+                      //   key: state.pageKey,
+                      //   child: MovieDetailsScreen(movieId: id, movie: movie),
+                      // );
+                    },
+                  )
+                ],
               ),
             ],
           ),

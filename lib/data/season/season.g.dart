@@ -11,7 +11,7 @@ _$SeasonImpl _$$SeasonImplFromJson(Map<String, dynamic> json) => _$SeasonImpl(
       startDate: json['startDate'] as String? ?? "",
       endDate: json['endDate'] as String? ?? "",
       currentMatchday: (json['currentMatchday'] as num?)?.toInt() ?? 0,
-      winner: json['winner'] as String?,
+      winner: json['winner'] ?? null,
     );
 
 Map<String, dynamic> _$$SeasonImplToJson(_$SeasonImpl instance) =>

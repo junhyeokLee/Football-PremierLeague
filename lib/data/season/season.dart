@@ -10,7 +10,7 @@ class Season with _$Season {
     @Default("") String startDate,
     @Default("") String endDate,
     @Default(0) int currentMatchday,
-    String? winner,
+    @Default(null) winner,
   }) = _Season;
 
   factory Season.fromJson(Map<String, dynamic> json) => _$SeasonFromJson(json);

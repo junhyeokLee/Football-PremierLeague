@@ -24,7 +24,7 @@ mixin _$Season {
   String get startDate => throw _privateConstructorUsedError;
   String get endDate => throw _privateConstructorUsedError;
   int get currentMatchday => throw _privateConstructorUsedError;
-  String? get winner => throw _privateConstructorUsedError;
+  dynamic get winner => throw _privateConstructorUsedError;
 
   /// Serializes this Season to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $SeasonCopyWith<$Res> {
       String startDate,
       String endDate,
       int currentMatchday,
-      String? winner});
+      dynamic winner});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class _$SeasonCopyWithImpl<$Res, $Val extends Season>
       winner: freezed == winner
           ? _value.winner
           : winner // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -106,7 +106,7 @@ abstract class _$$SeasonImplCopyWith<$Res> implements $SeasonCopyWith<$Res> {
       String startDate,
       String endDate,
       int currentMatchday,
-      String? winner});
+      dynamic winner});
 }
 
 /// @nodoc
@@ -145,10 +145,7 @@ class __$$SeasonImplCopyWithImpl<$Res>
           ? _value.currentMatchday
           : currentMatchday // ignore: cast_nullable_to_non_nullable
               as int,
-      winner: freezed == winner
-          ? _value.winner
-          : winner // ignore: cast_nullable_to_non_nullable
-              as String?,
+      winner: freezed == winner ? _value.winner! : winner,
     ));
   }
 }
@@ -161,7 +158,7 @@ class _$SeasonImpl implements _Season {
       this.startDate = "",
       this.endDate = "",
       this.currentMatchday = 0,
-      this.winner});
+      this.winner = null});
 
   factory _$SeasonImpl.fromJson(Map<String, dynamic> json) =>
       _$$SeasonImplFromJson(json);
@@ -178,7 +175,8 @@ class _$SeasonImpl implements _Season {
   @JsonKey()
   final int currentMatchday;
   @override
-  final String? winner;
+  @JsonKey()
+  final dynamic winner;
 
   @override
   String toString() {
@@ -196,13 +194,13 @@ class _$SeasonImpl implements _Season {
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.currentMatchday, currentMatchday) ||
                 other.currentMatchday == currentMatchday) &&
-            (identical(other.winner, winner) || other.winner == winner));
+            const DeepCollectionEquality().equals(other.winner, winner));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, startDate, endDate, currentMatchday, winner);
+  int get hashCode => Object.hash(runtimeType, id, startDate, endDate,
+      currentMatchday, const DeepCollectionEquality().hash(winner));
 
   /// Create a copy of Season
   /// with the given fields replaced by the non-null parameter values.
@@ -226,7 +224,7 @@ abstract class _Season implements Season {
       final String startDate,
       final String endDate,
       final int currentMatchday,
-      final String? winner}) = _$SeasonImpl;
+      final dynamic winner}) = _$SeasonImpl;
 
   factory _Season.fromJson(Map<String, dynamic> json) = _$SeasonImpl.fromJson;
 
@@ -239,7 +237,7 @@ abstract class _Season implements Season {
   @override
   int get currentMatchday;
   @override
-  String? get winner;
+  dynamic get winner;
 
   /// Create a copy of Season
   /// with the given fields replaced by the non-null parameter values.
