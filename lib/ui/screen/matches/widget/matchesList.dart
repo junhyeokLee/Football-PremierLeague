@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -9,6 +10,7 @@ import 'package:football_premier_league/common/constant/assets.dart';
 import 'package:football_premier_league/common/dart/extension/datetime_extension.dart';
 import 'package:football_premier_league/common/dart/extension/match_status_translation.dart';
 import 'package:football_premier_league/common/dart/extension/team_name_translation.dart';
+import 'package:football_premier_league/network/dio_error.dart';
 import 'package:football_premier_league/routing/appRoute.dart';
 import 'package:football_premier_league/ui/widget/customCalendar.dart';
 import 'package:football_premier_league/providers/calendar_provider.dart';
@@ -96,8 +98,9 @@ class MatchesList extends HookConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    // getErrorMessage 메서드를 호출하여 사용자 친화적인 에러 메시지 표시
-                    '${matchesSnapshot.data?.getErrorMessage() ?? '알 수 없는 오류'}',
+                    matchesSnapshot.error is DioError
+                        ? getErrorMessage(matchesSnapshot.error as DioError)
+                        : getErrorMessage(matchesSnapshot.error!), // 여기서 error는 Object 타입
                     style: const TextStyle(color: Colors.red),
                   ),
                 ),

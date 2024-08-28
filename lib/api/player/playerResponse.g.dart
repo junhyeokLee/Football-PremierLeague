@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'player.dart';
+part of 'playerResponse.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
+_$PlayerResponseImpl _$$PlayerResponseImplFromJson(Map<String, dynamic> json) =>
+    _$PlayerResponseImpl(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String? ?? "",
       firstName: json['firstName'] as String? ?? "",
@@ -17,9 +18,16 @@ _$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
       position: json['position'] ?? "",
       shirtNumber: json['shirtNumber'] ?? 0,
       lastUpdated: json['lastUpdated'] as String,
+      currentTeam:
+          CurrentTeam.fromJson(json['currentTeam'] as Map<String, dynamic>),
+      errors: (json['errors'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
-Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) =>
+Map<String, dynamic> _$$PlayerResponseImplToJson(
+        _$PlayerResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -31,21 +39,6 @@ Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) =>
       'position': instance.position,
       'shirtNumber': instance.shirtNumber,
       'lastUpdated': instance.lastUpdated,
-    };
-
-_$SquadImpl _$$SquadImplFromJson(Map<String, dynamic> json) => _$SquadImpl(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String? ?? "",
-      position: json['position'] ?? "",
-      dateOfBirth: json['dateOfBirth'] as String? ?? "",
-      nationality: json['nationality'] as String? ?? "",
-    );
-
-Map<String, dynamic> _$$SquadImplToJson(_$SquadImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'position': instance.position,
-      'dateOfBirth': instance.dateOfBirth,
-      'nationality': instance.nationality,
+      'currentTeam': instance.currentTeam,
+      'errors': instance.errors,
     };

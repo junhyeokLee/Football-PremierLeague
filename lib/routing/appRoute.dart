@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:football_premier_league/data/team/team.dart';
 import 'package:football_premier_league/routing/scaffold_with_nested_navigation.dart';
+import 'package:football_premier_league/ui/screen/matches/detail/matchDetailsScreen.dart';
 import 'package:football_premier_league/ui/screen/matches/matchesScreen.dart';
+import 'package:football_premier_league/ui/screen/playerRank/detail/playersRankDetailsScreen.dart';
 import 'package:football_premier_league/ui/screen/playerRank/playersRankScreen.dart';
+import 'package:football_premier_league/ui/screen/teamRank/detail/teamRankDetailsScreen.dart';
 import 'package:football_premier_league/ui/screen/teamRank/teamsRankScreen.dart';
 import 'package:go_router/go_router.dart';
 
-import '../ui/screen/matches/detail/match_details_screen.dart';
 
 enum AppRoute {
   matches,
   match,
   teamRank,
-  playerRank,;
+  teamRankDetails,
+  playerRank,
+  playerRankDetails,
+  ;
   static AppRoute find(String? name) {
     return values.asNameMap()[name] ?? AppRoute.matches;
   }
@@ -94,6 +100,34 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   key: state.pageKey,
                   child: const TeamsRankScreen(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    name: AppRoute.teamRankDetails.name,
+                    pageBuilder: (context, state) {
+                      final id = int.parse(state.pathParameters['id'] as String);
+                      final team = state.extra as Team; // extra에서 team 객체를 가져옴
+                      return CustomTransitionPage(
+                        key: state.pageKey,
+                        child: TeamRankDetailsScreen(teamId: id,team: team),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          const begin = Offset(1.0, 0.0);
+                          const end = Offset.zero;
+                          const curve = Curves.easeInOut;
+                          final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                          final offsetAnimation = animation.drive(tween);
+
+                          return SlideTransition(
+                            position: offsetAnimation,
+                            child: child,
+                          );
+                        },
+                        transitionDuration:
+                        const Duration(milliseconds: 300), // 애니메이션 속도 조절
+                      );
+                    },
+                  )
+                ],
               ),
             ],
           ),
@@ -108,6 +142,34 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   key: state.pageKey,
                   child: const PlayersRankScreen(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: ':id/:playerName',
+                    name: AppRoute.playerRankDetails.name,
+                    pageBuilder: (context, state) {
+                      final id = int.parse(state.pathParameters['id'] as String);
+                      final playerName = state.pathParameters['playerName'] as String;
+                      return CustomTransitionPage(
+                        key: state.pageKey,
+                        child: PlayersRankDetailsScreen( playerId: id,playerName: playerName),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          const begin = Offset(1.0, 0.0);
+                          const end = Offset.zero;
+                          const curve = Curves.easeInOut;
+                          final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                          final offsetAnimation = animation.drive(tween);
+
+                          return SlideTransition(
+                            position: offsetAnimation,
+                            child: child,
+                          );
+                        },
+                        transitionDuration:
+                        const Duration(milliseconds: 300), // 애니메이션 속도 조절
+                      );
+                    },
+                  )
+                ],
               ),
             ],
           ),

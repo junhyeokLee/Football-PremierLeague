@@ -740,3 +740,35 @@ String translatePlayerName(String playerName) {
       return playerName; // 한국어 번역이 없을 경우 원래 이름 반환
   }
 }
+
+String translatePosition(String position) {
+  // 포지션 이름에 따라 변환된 한국어 이름을 반환
+  switch (position) {
+    case 'Goalkeeper':
+      return '골키퍼';
+    case 'Centre-Back':
+      return '센터백';
+    case 'Left-Back':
+      return '왼쪽 수비수';
+    case 'Right-Back':
+      return '오른쪽 수비수';
+    case 'Defensive Midfield':
+      return '수비형 미드필더';
+    case 'Central Midfield':
+      return '중앙 미드필더';
+    case 'Attacking Midfield':
+      return '공격형 미드필더';
+    case 'Midfield':
+      return '미드필더';
+    case 'Left Winger':
+      return '왼쪽 윙어';
+    case 'Right Winger':
+      return '오른쪽 윙어';
+    case 'Centre-Forward':
+      return '센터 포워드';
+    case 'Offence':
+      return '공격수';
+    default:
+      return position; // 변환되지 않은 포지션은 그대로 반환
+  }
+}

@@ -34,4 +34,11 @@ extension TeamNameTranslation on String {
     }
     return this; // 6글자 이하일 경우 원래 문자열 반환
   }
+
+  String get truncatedDetail {
+    if (length > 12) {
+      return '${substring(0, 12)}...'; // 6글자 초과 시 잘라내고 '...' 추가
+    }
+    return this; // 6글자 이하일 경우 원래 문자열 반환
+  }
 }

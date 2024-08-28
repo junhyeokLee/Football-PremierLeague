@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:football_premier_league/api/player/playerResponse.dart';
+import 'package:football_premier_league/common/common.dart';
+import 'package:football_premier_league/repository/persons/playersRepository.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class PlayersDetailsScreen extends ConsumerWidget {
-  const PlayersDetailsScreen(
-      {super.key, required this.matchId, required this.match});
-  final int matchId;
-  final Match? match;
+class PlayersRankDetailsScreen extends HookConsumerWidget {
+  const PlayersRankDetailsScreen(
+      {super.key, required this.playerId,required this.playerName});
+  final int playerId;
+  final String playerName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (match != null) {
+
+    final playerRepository = ref.watch(playersRepositoryProvider);
+    final playerFuture = useState<Future<PlayerResponse>?>(null);
+
+    useEffect(() {
+      playerFuture.value = playerRepository.getPlayer(playerId: playerId);
+      return null;
+    }, []);
+
+    final playerSnapshot = useFuture(playerFuture.value);
+
       return Scaffold(
         appBar: AppBar(
           leading: BackButton(
             onPressed: () => Navigator.pop(context),
           ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text("Match Details"),
-            ],
-          ),
+          titleSpacing: 0,
+          title: Text('${playerName?? ''}',style: context.textTheme.bodyLarge),
         ),
         body: Column(
           children: [
@@ -28,37 +39,5 @@ class PlayersDetailsScreen extends ConsumerWidget {
           ],
         ),
       );
-    } else {
-      return Container();
-      // final matchAsync = ref.watch(matchProvider(matchId: matchId));
-      // return matchAsync.when(
-      //   error: (e, st) => Scaffold(
-      //     appBar: AppBar(
-      //       // title: Text(match?.title ?? 'Error'),
-      //     ),
-      //     body: Center(child: Text(e.toString())),
-      //   ),
-      //   loading: () => Scaffold(
-      //     appBar: AppBar(
-      //       // title: Text(match?.title ?? 'Loading'),
-      //     ),
-      //     body: const Column(
-      //       children: [
-      //         // MatchListTileShimmer(),
-      //       ],
-      //     ),
-      //   ),
-      //   data: (match) => Scaffold(
-      //     appBar: AppBar(
-      //       title: Text(match.title),
-      //     ),
-      //     body: Column(
-      //       children: [
-      //         // MatchListTile(movie: movie),
-      //       ],
-      //     ),
-      //   ),
-      // );
     }
   }
-}

@@ -21,6 +21,7 @@ class LoggerInterceptor implements Interceptor {
         response.statusCode, url, '⬅️ Received response');
     if (response.requestOptions.queryParameters.isNotEmpty) {
       log('Query params: ${response.requestOptions.queryParameters}');
+
     }
     log('-------------------------');
     return handler.next(response);

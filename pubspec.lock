@@ -38,6 +38,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.11"
+  appbar_animated:
+    dependency: "direct main"
+    description:
+      name: appbar_animated
+      sha256: d94be1de0ed0e72ed8a842a8d01d0425df9e061356843e7eb6da2626e99c2ae9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   archive:
     dependency: transitive
     description:
@@ -70,6 +78,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  background_app_bar:
+    dependency: "direct main"
+    description:
+      name: background_app_bar
+      sha256: c1a7aa9c811f12cce585b701226630796bcd00205ed42c737bd2bcbaaba93fcd
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -278,6 +294,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  draggable_home:
+    dependency: "direct main"
+    description:
+      name: draggable_home
+      sha256: c89a1faa702712b2db4ef5c6615b6a7819aa0aa0b03c0ba79c7e17d042880b2a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.5"
   dropdown_button2:
     dependency: "direct main"
     description:
@@ -846,10 +870,10 @@ packages:
     dependency: transitive
     description:
       name: rxdart
-      sha256: "5c3004a4a8dbb94bd4bf5412a4def4acdaa12e12f269737a5751369e12d1a962"
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.28.0"
+    version: "0.27.7"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -935,6 +959,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliver_snap:
+    dependency: "direct main"
+    description:
+      name: sliver_snap
+      sha256: "67d42231e1da694bb035d09b184cb8ba26f0b78f40cb3794b96f7b1cb3b72014"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   source_gen:
     dependency: transitive
     description:

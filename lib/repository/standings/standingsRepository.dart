@@ -5,7 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:football_premier_league/api/standings/standingsResponse.dart';
 import 'package:football_premier_league/env.dart';
+import 'package:football_premier_league/network/dio_error.dart';
 import 'package:football_premier_league/network/dio_provider.dart';
+import 'package:football_premier_league/network/handleError.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'standingsRepository.g.dart';
@@ -30,9 +32,12 @@ class StandingsRepository {
       },
     );
 
-    final response = await client.getUri(uri, cancelToken: cancelToken);
-    debugPrint('Standings Data: ${response.data}');
-    return StandingsResponse.fromJson(response.data);
+    return handleError(() async {
+      final response = await client.getUri(uri, cancelToken: cancelToken);
+      debugPrint('StandingsResponse Data: ${response.data}');
+      return StandingsResponse.fromJson(response.data);
+    });
+
   }
 
 }

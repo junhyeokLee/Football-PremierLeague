@@ -5,7 +5,7 @@ import 'package:football_premier_league/common/common.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
 import 'package:football_premier_league/ui/widget/customDropdownButton.dart';
 import 'package:football_premier_league/providers/calendar_provider.dart';
-import 'package:football_premier_league/ui/screen/matches/widget/matches_list.dart';
+import 'package:football_premier_league/ui/screen/matches/widget/matchesList.dart';
 
 class MatchesScreen extends ConsumerWidget {
   const MatchesScreen({super.key});

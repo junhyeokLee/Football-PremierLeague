@@ -8,7 +8,9 @@ import 'package:football_premier_league/common/constant/app_colors.dart';
 import 'package:football_premier_league/common/constant/assets.dart';
 import 'package:football_premier_league/providers/calendar_provider.dart';
 import 'package:football_premier_league/repository/standings/standingsRepository.dart';
+import 'package:football_premier_league/routing/appRoute.dart';
 import 'package:football_premier_league/ui/widget/customSearchField.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TeamRankList extends HookConsumerWidget {
@@ -34,7 +36,8 @@ class TeamRankList extends HookConsumerWidget {
       body: Column(
         children: [
           // 검색 필드 추가
-          CustomSearchField(hintText: 'Search team...', searchQuery: searchQuery),
+          CustomSearchField(
+              hintText: 'Search team...', searchQuery: searchQuery),
           Expanded(
             // Future의 상태에 따라 다른 위젯을 표시
             child: standingsSnapshot.connectionState == ConnectionState.waiting
@@ -67,74 +70,84 @@ class TeamRankList extends HookConsumerWidget {
                                   searchQuery.value);
                               final table = filteredTables[index];
 
-                              return Container(
-                                color: Colors.white,
-                                margin: const EdgeInsets.symmetric(),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16,
-                                      left: 16,
-                                      right: 16), // 카드 내부의 패딩
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            '${table.position}', // 순위 표시
-                                            style: const TextStyle(
-                                              color: AppColors.primaryColor,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
+                              return InkWell(
+                                onTap: () {
+                                  // 각 팀 클릭 시 특정 페이지로 이동
+                                  context.goNamed(
+                                    AppRoute.teamRankDetails.name,
+                                    pathParameters: {'id': table.team.id.toString()},
+                                    extra: table.team,  // team 객체를 extra를 통해 전달
+                                  );
+                                },
+                                child: Container(
+                                  color: Colors.white,
+                                  margin: const EdgeInsets.symmetric(),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 16,
+                                        left: 16,
+                                        right: 16), // 카드 내부의 패딩
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '${table.position}', // 순위 표시
+                                              style: const TextStyle(
+                                                color: AppColors.primaryColor,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
-                                          ),
-                                          const SizedBox(
-                                              width: 16), // 순위와 이미지 사이 간격
-                                          CachedNetworkImage(
-                                            imageUrl: table.team.crest,
-                                            // 팀 로고 URL 사용
-                                            width: 50.0,
-                                            height: 50.0,
-                                            fit: BoxFit.cover,
-                                            placeholder: (context, url) =>
-                                                const CircularProgressIndicator(
-                                              color: AppColors.primaryColor,
+                                            const SizedBox(
+                                                width: 16), // 순위와 이미지 사이 간격
+                                            CachedNetworkImage(
+                                              imageUrl: table.team.crest,
+                                              // 팀 로고 URL 사용
+                                              width: 50.0,
+                                              height: 50.0,
+                                              fit: BoxFit.cover,
+                                              placeholder: (context, url) =>
+                                                  const CircularProgressIndicator(
+                                                color: AppColors.primaryColor,
+                                              ),
+                                              // 로딩 중 표시
+                                              errorWidget: (context, url,
+                                                      error) =>
+                                                  const Icon(
+                                                      Icons.error), // 에러 발생 시 표시
                                             ),
-                                            // 로딩 중 표시
-                                            errorWidget: (context, url,
-                                                    error) =>
-                                                const Icon(
-                                                    Icons.error), // 에러 발생 시 표시
-                                          ),
-                                          const SizedBox(
-                                              width: 8), // 이미지와 팀 이름 사이 간격
-                                          Expanded(
-                                            child: Text(
-                                              translateTeamName(
-                                                  table.team.name),
-                                              // 여기에서 translateTeamName 호출
+                                            const SizedBox(
+                                                width: 8), // 이미지와 팀 이름 사이 간격
+                                            Expanded(
+                                              child: Text(
+                                                translateTeamName(
+                                                    table.team.name),
+                                                // 여기에서 translateTeamName 호출
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              '${table.points} pts', // 팀 점수 표시
                                               style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 16,
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            '${table.points} pts', // 팀 점수 표시
-                                            style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 16),
-                                      Container(
-                                        height: 1,
-                                        color: AppColors.grey10,
-                                      ),
-                                    ],
+                                          ],
+                                        ),
+                                        const SizedBox(height: 16),
+                                        Container(
+                                          height: 1,
+                                          color: AppColors.grey10,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

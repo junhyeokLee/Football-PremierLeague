@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:football_premier_league/api/matches/matchesResponse.dart';
 import 'package:football_premier_league/env.dart';
 import 'package:football_premier_league/network/dio_provider.dart';
+import 'package:football_premier_league/network/handleError.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'matchesRepository.g.dart';
@@ -31,9 +32,12 @@ class MatchesRepository {
       },
     );
 
-    final response = await client.getUri(uri, cancelToken: cancelToken);
-    debugPrint('Matches Data: ${response.data}');
-    return MatchesResponse.fromJson(response.data);
+    return handleError(() async {
+      final response = await client.getUri(uri, cancelToken: cancelToken);
+      debugPrint('Matches Data: ${response.data}');
+      return MatchesResponse.fromJson(response.data);
+    });
+
   }
 
   Future<MatchesResponse> fetchSeasonMatches (
@@ -46,10 +50,11 @@ class MatchesRepository {
         'season': season ?? DateTime.now().year.toString(),
       },
     );
-
-    final response = await client.getUri(uri, cancelToken: cancelToken);
-    debugPrint('Matches Data: ${response.data}');
-    return MatchesResponse.fromJson(response.data);
+    return handleError(() async {
+      final response = await client.getUri(uri, cancelToken: cancelToken);
+      debugPrint('Matches Data: ${response.data}');
+      return MatchesResponse.fromJson(response.data);
+    });
   }
 }
 
