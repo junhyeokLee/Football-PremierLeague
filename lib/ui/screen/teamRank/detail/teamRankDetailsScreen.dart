@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:football_premier_league/api/team/teamResponse.dart';
 import 'package:football_premier_league/common/common.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
+import 'package:football_premier_league/common/constant/assets.dart';
 import 'package:football_premier_league/common/dart/extension/player_name_translation.dart';
 import 'package:football_premier_league/common/dart/extension/team_name_translation.dart';
 import 'package:football_premier_league/data/team/team.dart';
@@ -56,9 +57,7 @@ class TeamRankDetailsScreen extends HookConsumerWidget {
         teamSnapshot.connectionState == ConnectionState.waiting
             ? const Center(
           child: CircularProgressIndicator(
-            color: AppColors.primaryColor,
-          ),
-        )
+              color: AppColors.primaryColor))
             : teamSnapshot.hasError
             ? Center(
           child: Padding(
@@ -72,106 +71,149 @@ class TeamRankDetailsScreen extends HookConsumerWidget {
           ),
         )
             : teamSnapshot.hasData && teamSnapshot.data!.squad.isNotEmpty
-            ? SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // 코치 정보 표시
-                  Text("코치",
-                      style: Theme.of(context).textTheme.labelMedium),
-                  const SizedBox(height: 8),
-                 Card(
-                  color: Colors.white,
-                   child: ListTile(
-                     leading: CircleAvatar(
-                       backgroundColor: AppColors.backgroundColor,
-                       child: Text(
-                         "${teamSnapshot.data!.coach.name[0]}",
-                         style: Theme.of(context).textTheme.labelMedium,
-                       ),
-                     ),
-                     title: Text(
-                       "이름: ${teamSnapshot.data!.coach.name}",
-                       style: Theme.of(context).textTheme.labelSmall,
-                     ),
-                     subtitle: Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children: [
-                         const SizedBox(height: 4),
-                         Text(
-                           "국적: ${teamSnapshot.data!.coach.nationality}",
-                           style: Theme.of(context).textTheme.bodySmall,
-                         ),
-                         const SizedBox(height: 4),
-                         Text(
-                           "계약 기간: ${teamSnapshot.data!.coach.contract.start} ~ ${teamSnapshot.data!.coach.contract.until}",
-                           style: Theme.of(context).textTheme.bodySmall,
-                         ),
-                       ],
-                     ),
-                   ),
-                ),
-                const SizedBox(height: 8),
-
-                // 선수 명단
-                Text("선수 명단",
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-                ListView.builder(
-                  padding: const EdgeInsets.only(top: 12),
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: teamSnapshot.data!.squad.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => InkWell(
-                    onTap: () {
-                      context.goNamed(
-                        AppRoute.playerRankDetails.name,
-                        pathParameters: {'id': teamSnapshot.data!.squad[index].id.toString(),
-                        'playerName': teamSnapshot.data!.squad[index].name.playerNameTranslate
-                        }
-                      );
-                    },
-                    child: Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: AppColors.backgroundColor,
-                          child: Text("${teamSnapshot.data!.squad[index].name[0]}",
-                              style: Theme.of(context).textTheme.labelMedium),
-                        ),
-                        title: Text("이름: ${teamSnapshot.data!.squad[index].name.playerNameTranslate}",
-                            style: Theme.of(context).textTheme.labelSmall
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 4),
-                            Text(
-                                translatePosition("포지션: ${teamSnapshot.data!.squad[index].position}"),
-                                style: Theme.of(context).textTheme.bodySmall
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              "국적: ${teamSnapshot.data!.squad[index].nationality}",
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        )
+            ? _buildSingleChildScrollView(context, teamSnapshot.data!)
             : const Center(
           child: Text("선수 명단이 없습니다."),
         ),
       ],
     );
+  }
+
+  SingleChildScrollView _buildSingleChildScrollView(BuildContext context, TeamResponse teamSnapshot) {
+    return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 코치 정보 표시
+                Text("코치",
+                    style: Theme.of(context).textTheme.labelMedium),
+                const SizedBox(height: 8),
+               Card(
+                color: Colors.white,
+                 child: ListTile(
+                   leading: CircleAvatar(
+                     backgroundColor: AppColors.backgroundColor,
+                     child: Text(
+                       "${teamSnapshot.coach.name[0].playerNameTranslate}",
+                       style: Theme.of(context).textTheme.labelMedium,
+                     ),
+                   ),
+                   title: Row(
+                     children: [
+                       Icon(Icons.person, color: AppColors.grey20),
+                        const SizedBox(width: 8),
+                       Text(
+                         "${teamSnapshot.coach.name.playerNameTranslate}",
+                         style: Theme.of(context).textTheme.labelSmall,
+                       ),
+                     ],
+                   ),
+                   subtitle: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       const SizedBox(height: 4),
+                       Row(
+                         children: [
+                           Icon(Icons.flag, color: AppColors.grey20),
+                           const SizedBox(width: 8),
+                           Text(
+                             "${teamSnapshot.coach.nationality}",
+                             style: Theme.of(context).textTheme.bodySmall,
+                           ),
+                         ],
+                       ),
+                       const SizedBox(height: 4),
+                       Row(
+                         children: [
+                           Icon(Icons.receipt, color: AppColors.grey20),
+                           const SizedBox(width: 8),
+                           Text(
+                             "${teamSnapshot.coach.contract.start} ~ ${teamSnapshot.coach.contract.until}",
+                             style: Theme.of(context).textTheme.bodySmall,
+                           ),
+                         ],
+                       ),
+                     ],
+                   ),
+                 ),
+              ),
+              const SizedBox(height: 8),
+
+              // 선수 명단
+              Text("선수 명단",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              ListView.builder(
+                padding: const EdgeInsets.only(top: 12),
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: teamSnapshot.squad.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    context.goNamed(
+                      AppRoute.teeamRankPlayerDetails.name,
+                      pathParameters: {
+                      'id' : team.id.toString(),
+                      'playerId': teamSnapshot.squad[index].id.toString(),
+                      'playerName': teamSnapshot.squad[index].name.playerNameTranslate
+                      },
+                      extra: team,
+                    );
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: AppColors.backgroundColor,
+                        child: Text("${teamSnapshot.squad[index].name[0].teamNameTranslate}",
+                            style: Theme.of(context).textTheme.labelMedium),
+                      ),
+                      title: Row(
+                        children: [
+                          Icon(Icons.person, color: AppColors.grey20),
+                          const SizedBox(width: 8),
+                          Text("${teamSnapshot.squad[index].name.playerNameTranslate}",
+                              style: Theme.of(context).textTheme.labelSmall
+                          ),
+                        ],
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 4),
+                          Row(
+                            children: [
+                              Icon(Icons.local_parking, color: AppColors.grey20),
+                              const SizedBox(width: 8),
+                              Text(
+                                  translatePosition("${translatePosition(teamSnapshot.squad[index].position)}"),
+                                  style: Theme.of(context).textTheme.bodySmall
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 4),
+                          Row(
+                            children: [
+                              Icon(Icons.flag, color: AppColors.grey20),
+                              const SizedBox(width: 8),
+                              Text(
+                                "${teamSnapshot.squad[index].nationality}",
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
   }
 
   Row headerBottomBarWidget() {

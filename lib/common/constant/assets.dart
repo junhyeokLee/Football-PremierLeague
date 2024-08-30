@@ -9,6 +9,10 @@ class Assets {
   static const String teamSelect = 'assets/images/icon/team_select.png';
   static const String players = 'assets/images/icon/players.png';
   static const String empty_field = 'assets/images/icon/empty_field.png';
+  static const String location = 'assets/images/icon/location.png';
+  static const String backNumber = 'assets/images/icon/back_number.png';
+  static const String name = 'assets/images/icon/name.png';
+  static const String contract = 'assets/images/icon/contract.png';
 
 }
 

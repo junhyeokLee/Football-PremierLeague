@@ -16,6 +16,7 @@ enum AppRoute {
   match,
   teamRank,
   teamRankDetails,
+  teeamRankPlayerDetails,
   playerRank,
   playerRankDetails,
   ;
@@ -126,6 +127,34 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                         const Duration(milliseconds: 300), // 애니메이션 속도 조절
                       );
                     },
+                    routes: [
+                      GoRoute(
+                        path: ':playerId/:playerName',
+                        name: AppRoute.teeamRankPlayerDetails.name, // 이름을 고유하게 변경
+                        pageBuilder: (context, state) {
+                          final playerId = int.parse(state.pathParameters['playerId'] as String);
+                          final playerName = state.pathParameters['playerName'] as String;
+                          return CustomTransitionPage(
+                            key: state.pageKey,
+                            child: PlayersRankDetailsScreen( playerId: playerId,playerName: playerName),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              const begin = Offset(1.0, 0.0);
+                              const end = Offset.zero;
+                              const curve = Curves.easeInOut;
+                              final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                              final offsetAnimation = animation.drive(tween);
+
+                              return SlideTransition(
+                                position: offsetAnimation,
+                                child: child,
+                              );
+                            },
+                            transitionDuration:
+                            const Duration(milliseconds: 300), // 애니메이션 속도 조절
+                          );
+                        },
+                      )
+                    ],
                   )
                 ],
               ),
@@ -144,14 +173,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 ),
                 routes: [
                   GoRoute(
-                    path: ':id/:playerName',
+                    path: ':playerId/:playerName',
                     name: AppRoute.playerRankDetails.name,
                     pageBuilder: (context, state) {
-                      final id = int.parse(state.pathParameters['id'] as String);
+                      final playerId = int.parse(state.pathParameters['playerId'] as String);
                       final playerName = state.pathParameters['playerName'] as String;
                       return CustomTransitionPage(
                         key: state.pageKey,
-                        child: PlayersRankDetailsScreen( playerId: id,playerName: playerName),
+                        child: PlayersRankDetailsScreen( playerId: playerId,playerName: playerName),
                         transitionsBuilder: (context, animation, secondaryAnimation, child) {
                           const begin = Offset(1.0, 0.0);
                           const end = Offset.zero;

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,6 +7,7 @@ import 'package:football_premier_league/api/standings/standingsResponse.dart';
 import 'package:football_premier_league/common/common.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
 import 'package:football_premier_league/common/constant/assets.dart';
+import 'package:football_premier_league/network/dio_error.dart';
 import 'package:football_premier_league/providers/calendar_provider.dart';
 import 'package:football_premier_league/repository/standings/standingsRepository.dart';
 import 'package:football_premier_league/routing/appRoute.dart';
@@ -51,8 +53,9 @@ class TeamRankList extends HookConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            // getErrorMessage 메서드를 호출하여 사용자 친화적인 에러 메시지 표시
-                            '${standingsSnapshot.data?.getErrorMessage() ?? '알 수 없는 오류'}',
+                            standingsSnapshot.error is DioError
+                                ? getErrorMessage(standingsSnapshot.error as DioError)
+                                : getErrorMessage(standingsSnapshot.error!), // 여기서 error는 Object 타입
                             style: const TextStyle(color: Colors.red),
                           ),
                         ),

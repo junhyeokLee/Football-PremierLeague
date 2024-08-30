@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -7,9 +8,12 @@ import 'package:football_premier_league/common/common.dart';
 import 'package:football_premier_league/common/constant/app_colors.dart';
 import 'package:football_premier_league/common/constant/assets.dart';
 import 'package:football_premier_league/common/dart/extension/player_name_translation.dart';
+import 'package:football_premier_league/network/dio_error.dart';
 import 'package:football_premier_league/providers/calendar_provider.dart';
 import 'package:football_premier_league/repository/persons/playersRepository.dart';
+import 'package:football_premier_league/routing/appRoute.dart';
 import 'package:football_premier_league/ui/widget/customSearchField.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PlayersRankList extends HookConsumerWidget {
@@ -49,8 +53,9 @@ class PlayersRankList extends HookConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            // getErrorMessage 메서드를 호출하여 사용자 친화적인 에러 메시지 표시
-                            '${scorerSnapshot.data?.getErrorMessage() ?? '알 수 없는 오류'}',
+                            scorerSnapshot.error is DioError
+                                ? getErrorMessage(scorerSnapshot.error as DioError)
+                                : getErrorMessage(scorerSnapshot.error!), // 여기서 error는 Object 타입
                             style: const TextStyle(color: Colors.red),
                           ),
                         ),
@@ -68,69 +73,81 @@ class PlayersRankList extends HookConsumerWidget {
                               //     scorerSnapshot.data!.scorers.toList();
                               // final scorer = scorerList[index];
 
-                              return Container(
-                                color: Colors.white,
-                                margin: const EdgeInsets.symmetric(),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16,
-                                      left: 16,
-                                      right: 16), // 카드 내부의 패딩
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            '${index + 1}', // 순위 표시
-                                            style: const TextStyle(
-                                              color: AppColors.primaryColor,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                              width: 16), // 순위와 이미지 사이 간격
-                                          CachedNetworkImage(
-                                            imageUrl: scorer.team.crest,
-                                            // 팀 로고 URL 사용
-                                            width: 50.0,
-                                            height: 50.0,
-                                            fit: BoxFit.cover,
-                                            placeholder: (context, url) =>
-                                                const CircularProgressIndicator(
-                                              color: AppColors.primaryColor,
-                                            ),
-                                            // 로딩 중 표시
-                                            errorWidget: (context, url,
-                                                    error) =>
-                                                const Icon(
-                                                    Icons.error), // 에러 발생 시 표시
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Expanded(
-                                            child: Text(
-                                              translatePlayerName(
-                                                  scorer.player.name),
-                                              // 여기에서 translateTeamName 호출
+                              return InkWell(
+                                onTap: () {
+                                  // 플레이어 상세 화면으로 이동
+                                  context.goNamed(
+                                    AppRoute.playerRankDetails.name,
+                                    pathParameters: {
+                                      'playerId': scorer.player.id.toString(),
+                                      'playerName': scorer.player.name,
+                                    },
+                                  );
+                                },
+                                child: Container(
+                                  color: Colors.white,
+                                  margin: const EdgeInsets.symmetric(),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 16,
+                                        left: 16,
+                                        right: 16), // 카드 내부의 패딩
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '${index + 1}', // 순위 표시
                                               style: const TextStyle(
-                                                color: Colors.black,
+                                                color: AppColors.primaryColor,
                                                 fontSize: 16,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                          ),
-                                          Text('${scorer.goals} pts',
-                                              style: context
-                                                  .textTheme.labelMedium),
-                                        ],
-                                      ),
-                                      SizedBox(height: 16),
-                                      Container(
-                                        height: 1,
-                                        color: AppColors.grey10,
-                                      ),
-                                    ],
+                                            const SizedBox(
+                                                width: 16), // 순위와 이미지 사이 간격
+                                            CachedNetworkImage(
+                                              imageUrl: scorer.team.crest,
+                                              // 팀 로고 URL 사용
+                                              width: 50.0,
+                                              height: 50.0,
+                                              fit: BoxFit.cover,
+                                              placeholder: (context, url) =>
+                                                  const CircularProgressIndicator(
+                                                color: AppColors.primaryColor,
+                                              ),
+                                              // 로딩 중 표시
+                                              errorWidget: (context, url,
+                                                      error) =>
+                                                  const Icon(
+                                                      Icons.error), // 에러 발생 시 표시
+                                            ),
+                                            const SizedBox(width: 8),
+                                            Expanded(
+                                              child: Text(
+                                                translatePlayerName(
+                                                    scorer.player.name),
+                                                // 여기에서 translateTeamName 호출
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                            Text('${scorer.goals} pts',
+                                                style: context
+                                                    .textTheme.labelMedium),
+                                          ],
+                                        ),
+                                        SizedBox(height: 16),
+                                        Container(
+                                          height: 1,
+                                          color: AppColors.grey10,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

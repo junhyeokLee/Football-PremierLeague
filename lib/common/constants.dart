@@ -768,6 +768,8 @@ String translatePosition(String position) {
       return '센터 포워드';
     case 'Offence':
       return '공격수';
+    case '':
+      return'empty';
     default:
       return position; // 변환되지 않은 포지션은 그대로 반환
   }
