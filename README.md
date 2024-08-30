@@ -2,16 +2,28 @@
 
 footballPremierLeague
 
-## Getting Started
+football-data.org 의 무료 API를 이용한 프리미어리그 경기일정 및 랭킹, 팀, 개인선수 정보를 볼 수 있는 AOS, IOS 앱입니다.
 
-This project is a starting point for a Flutter application.
+사용된 라이브러리:
+- riverpod
+- riverpod_annotation
+- flutter_riverpod
+- hooks
+- hooks_riverpod
+- go_router
+- shared_preferences
+- cached_network_image
+- dio
+- freezed_annotation
+- json_annotation
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Football-PremierLeague
+<h3>스크린샷</h3>
+<div style="display: flex; justify-content: space-between;">
+    <img src="assets/screenshot1.png" width="300" alt="iPhone 15 Pro Screenshot 1">
+    <img src="assets/screenshot2.png" width="300" alt="iPhone 15 Pro Screenshot 2">
+    <img src="assets/screenshot3.png" width="300" alt="iPhone 15 Pro Screenshot 3">
+    <img src="assets/screenshot4.png" width="300" alt="iPhone 15 Pro Screenshot 4">
+    <img src="assets/screenshot5.png" width="300" alt="iPhone 15 Pro Screenshot 5">
+    <img src="assets/screenshot6.png" width="300" alt="iPhone 15 Pro Screenshot 6">
+    <img src="assets/screenshot7.png" width="300" alt="iPhone 15 Pro Screenshot 7">
+</div>
